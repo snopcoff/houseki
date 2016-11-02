@@ -66,43 +66,9 @@ ul {
     
     <div class="categories">
       
-      <ul class="temp dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="font-size: 14px;">
-       <h3 style="color:#669900;">DRINK</h3>
-        <% @fd_types.each do |type| %>
-        <% if type.foodtype=="drink" %>
-        <li class="dropdown-submenu">
-           <%= link_to fd_type_path(type.id) do %>
-              <%= type.name %>
-            <% end %>
-          <ul class="dropdown-menu">
-            
-            <li class="dropdown-submenu"><a tabindex="-1" href="#">Second level</a></li>
-            <li><a href="#">Second level</a></li>
-            <li><a href="#">Second level</a></li>
-          </ul>
-        </li>
-        <% end %>
-        <% end %>
-      </ul>
       
-      <ul class="temp dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="font-size: 14px;">
-       <h3 style="color:#669900;">FOODS</h3>
-        <% @fd_types.each do |type| %>
-        <% if type.foodtype=="food" %>
-        <li class="dropdown-submenu">
-           <%= link_to fd_type_path(type.id) do %>
-              <%= type.name %>
-            <% end %>
-          <ul class="dropdown-menu">
-            
-            <li class="dropdown-submenu"><a tabindex="-1" href="#">Second level</a></li>
-            <li><a href="#">Second level</a></li>
-            <li><a href="#">Second level</a></li>
-          </ul>
-        </li>
-        <% end %>
-        <% end %>
-      </ul>
+      
+      
       
     </div>
   </div>
@@ -137,3 +103,7 @@ ul {
     <% end %>
   </div>
 </div>
+
+<% @fd_type.fooddrinks.each do |fooddrink| %>
+  <p><%= fooddrink.name %></p>
+<% end %>

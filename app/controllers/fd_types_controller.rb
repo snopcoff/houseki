@@ -13,7 +13,7 @@ class FdTypesController < ApplicationController
      @fooddrinks = Fooddrink.all
     @users = User.all
     
-    @fd_types = FdType.all
+    @fd_type = FdType.find(params[:id])
   end
 
   # GET /fd_types/new

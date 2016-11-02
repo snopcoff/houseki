@@ -1,7 +1,7 @@
 <% if @results.presence %>
     <% @results.each do |result| %>
         <%= link_to(fooddrink_path(result.id)) do %>
-            <%= image_tag result.file, class: 'img-thumbnail' %><br />
+            <%= image_tag result.file, class: 'img-thumbnail avatar' %><br />
             <%= result.name %><br />
             Type: 
             <% if result.foodtype %>
