@@ -63,8 +63,14 @@ class FooddrinksController < ApplicationController
   # DELETE /fooddrinks/1.json
   def destroy
     @fooddrink.destroy
+    if request.referrer.eql?(request.base_url+"/admin/fooddrink")
+      redirect_url = :back
+    else
+      redirect_url = root_url
+    end
+    
     respond_to do |format|
-      format.html { redirect_to :back, notice: 'Fooddrink was successfully destroyed.' }
+      format.html { redirect_to redirect_url, notice: 'Fooddrink was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
