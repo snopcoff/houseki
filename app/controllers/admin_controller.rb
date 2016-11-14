@@ -16,14 +16,20 @@ class AdminController < ApplicationController
   end
 
   def update_user
+    notice = ""
     user = User.find(params[:id])
     if user.has_role? :admin
       user.remove_role :admin
+      notice = 'Remove admin role from "'+user.name+'" successfully'
     else
       user.add_role :admin
+      notice = 'Set "'+user.name+'" as admin successfully'
     end
     
-    redirect_to '/admin'
+    respond_to do |format|
+      format.html { redirect_to admin_user_url, notice: notice }
+      format.json { head :no_content }
+    end
   end
   
   def destroy_user
@@ -40,7 +46,7 @@ class AdminController < ApplicationController
     end
     
     respond_to do |format|
-      format.html { redirect_to admin_url, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to admin_user_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
