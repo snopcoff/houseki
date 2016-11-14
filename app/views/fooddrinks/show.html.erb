@@ -7,7 +7,7 @@
 
   <div class="col-md-8 ">
     <h3><%= @fooddrink.name.capitalize %>
-      <% if user_signed_in? && @fooddrink.user_id == current_user.id || (current_user.has_role? :admin) %>
+      <% if user_signed_in? && (@fooddrink.user_id == current_user.id || (current_user.has_role? :admin)) %>
           <%= link_to 'Edit', edit_fooddrink_path(@fooddrink), class: "btn btn-primary" %>
           <%= link_to 'Delete', @fooddrink, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
       <% end %>
