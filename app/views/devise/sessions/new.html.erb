@@ -1,5 +1,8 @@
+<p id="notice"><%= notice %></p>
 <% flash.each do |name, msg| %>
-  <%= content_tag :p, msg, :id => 'login_error' if msg.is_a?(String) %>
+  <% if msg.eql?('Invalid Email or password.') %>
+    <%= content_tag :p, msg, :id => 'login_error' if msg.is_a?(String) %>
+  <% end %>
 <% end %>
 <div class="background-image"></div>
 <div class="center auth-content">
