@@ -58,6 +58,11 @@ function initPage() {
         toastr.success(notice.text());
         notice.hide();
     }
+    var login_error = $('#login_error');
+    if (login_error.text() != "") {
+        toastr.error(login_error.text());
+        login_error.hide();
+    }
     var errors = $('#error_explanation ul li');
     if (!jQuery.isEmptyObject(errors)) {
         errors.each(function (i, obj) {

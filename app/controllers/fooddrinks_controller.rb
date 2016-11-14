@@ -36,7 +36,7 @@ class FooddrinksController < ApplicationController
 
     respond_to do |format|
       if @fooddrink.save
-        format.html { redirect_to @fooddrink, notice: 'Fooddrink was successfully created.' }
+        format.html { redirect_to @fooddrink, notice: 'Food/Drink was successfully created.' }
         format.json { render :show, status: :created, location: @fooddrink }
       else
         format.html { render :new }
@@ -50,7 +50,7 @@ class FooddrinksController < ApplicationController
   def update
     respond_to do |format|
       if @fooddrink.update(fooddrink_params)
-        format.html { redirect_to @fooddrink, notice: 'Fooddrink was successfully updated.' }
+        format.html { redirect_to @fooddrink, notice: 'Food/Drink was successfully updated.' }
         format.json { render :show, status: :ok, location: @fooddrink }
       else
         format.html { render :edit }
@@ -62,6 +62,7 @@ class FooddrinksController < ApplicationController
   # DELETE /fooddrinks/1
   # DELETE /fooddrinks/1.json
   def destroy
+    notice = '"'+@fooddrink.name+'" was successfully removed.'
     @fooddrink.destroy
     if request.referrer.eql?(request.base_url+"/admin/fooddrink")
       redirect_url = :back
@@ -70,7 +71,7 @@ class FooddrinksController < ApplicationController
     end
     
     respond_to do |format|
-      format.html { redirect_to redirect_url, notice: 'Fooddrink was successfully destroyed.' }
+      format.html { redirect_to redirect_url, notice: notice }
       format.json { head :no_content }
     end
   end

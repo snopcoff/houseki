@@ -1,3 +1,6 @@
+<% flash.each do |name, msg| %>
+  <%= content_tag :p, msg, :id => 'login_error' if msg.is_a?(String) %>
+<% end %>
 <div class="background-image"></div>
 <div class="center auth-content">
   

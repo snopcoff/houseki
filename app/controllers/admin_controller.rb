@@ -16,14 +16,13 @@ class AdminController < ApplicationController
   end
 
   def update_user
-    notice = ""
     user = User.find(params[:id])
     if user.has_role? :admin
       user.remove_role :admin
-      notice = 'Remove admin role from "'+user.name+'" successfully'
+      notice = 'Remove admin role from "'+user.name+'" successfully.'
     else
       user.add_role :admin
-      notice = 'Set "'+user.name+'" as admin successfully'
+      notice = 'Set "'+user.name+'" as admin successfully.'
     end
     
     respond_to do |format|
@@ -35,6 +34,7 @@ class AdminController < ApplicationController
   def destroy_user
     user = User.find(params[:id])
     rates = Rate.where(:rater_id => user.id)
+    notice = '"'+user.name+'" was successfully removed.'
     fooddrinks = Fooddrink.all
     user.destroy
     rates.delete_all
@@ -46,7 +46,7 @@ class AdminController < ApplicationController
     end
     
     respond_to do |format|
-      format.html { redirect_to admin_user_url, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to admin_user_url, notice: notice }
       format.json { head :no_content }
     end
   end

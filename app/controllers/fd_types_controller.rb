@@ -28,10 +28,10 @@ class FdTypesController < ApplicationController
   # POST /fd_types.json
   def create
     @fd_type = FdType.new(fd_type_params)
-
+    notice = 'Successfully add "'+@fd_type.name+'" into category.'
     respond_to do |format|
       if @fd_type.save
-        format.html { redirect_to admin_category_url, notice: 'Fd type was successfully created.' }
+        format.html { redirect_to admin_category_url, notice: notice }
         format.json { render :show, status: :created, location: @fd_type }
       else
         format.html { render :new }
@@ -45,7 +45,7 @@ class FdTypesController < ApplicationController
   def update
     respond_to do |format|
       if @fd_type.update(fd_type_params)
-        format.html { redirect_to admin_category_url, notice: 'Fd type was successfully updated.' }
+        format.html { redirect_to admin_category_url, notice: 'Successfully updated category.' }
         format.json { render :show, status: :ok, location: @fd_type }
       else
         format.html { render :edit }
@@ -57,9 +57,10 @@ class FdTypesController < ApplicationController
   # DELETE /fd_types/1
   # DELETE /fd_types/1.json
   def destroy
+    notice = '"'+@fd_type.name+'" was successfully removed.'
     @fd_type.destroy
     respond_to do |format|
-      format.html { redirect_to :back, notice: 'Fd type was successfully destroyed.' }
+      format.html { redirect_to :back, notice: notice }
       format.json { head :no_content }
     end
   end
