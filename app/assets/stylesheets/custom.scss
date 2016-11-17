@@ -114,7 +114,8 @@ div.auth-content:hover, div.auth-content:active, div.auth-content:focus {
 }
 
 .review {
-  p {
+  div {
+    white-space: pre-wrap;
     margin-bottom: 10px;
   }
 }

@@ -22,6 +22,10 @@
         <% end %>
       </div>
       <div>
+        <label>Type: </label>
+        <%= @fooddrink.fd_type.name %>
+      </div>
+      <div>
         <label>Price: </label>
         <%= @fooddrink.price %> <%= @fooddrink.price_unit %>
       </div>
@@ -32,8 +36,8 @@
 
       <% if @fooddrink.review.presence %>
           <div class="review">
-            <label>Review</label><br/>
-            <%= simple_format(@fooddrink.review) %>
+            <label>Review</label>
+            <div><%= @fooddrink.review %></div>
           </div>
       <% end %>
 
