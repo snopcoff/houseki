@@ -4,7 +4,7 @@
     <% @fooddrinks.last(6).reverse.each do |fooddrink| %>
       <div class="col-md-3">
           <div class="text-center"  style="height-max:100px;">
-            <%= link_to fooddrink_path(fooddrink.id) do %>
+            <%= link_to fooddrink_path(fooddrink.id), :rel => "lightbox", class: "has-tooltip", :data => {:toggle=>"tooltip", :placement=>"auto"}, title: display_info(fooddrink) do %>
               <%= image_tag(fooddrink.file, class: "img-thumbnail avatar") %>
             <% end %>
           </div>

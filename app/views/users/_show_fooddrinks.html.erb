@@ -1,8 +1,8 @@
 <% @fooddrinks.each do |fooddrink| %>
     <div class="col-md-4 users-show-fooddrink">
-        <%= link_to fooddrink_path(fooddrink.id) do %>
+        <%= link_to fooddrink_path(fooddrink.id), :rel => "lightbox", class: "has-tooltip", :data => {:toggle=>"tooltip", :placement=>"auto"}, title: display_info(fooddrink) do %>
             <%= image_tag(fooddrink.file, class: "img-thumbnail avatar") %>
+            <%= display_info(fooddrink) %>
         <% end %>
-        <h5 class="div-co-name"><%= fooddrink.name %></h5>
     </div>
 <% end %>

@@ -10,7 +10,7 @@
         <% @results.each do |result| %>
             <div class="col-sm-6 col-md-4">
               <div class="thumbnail">
-                <%= link_to(fooddrink_path(result.id)) do %>
+                <%= link_to(fooddrink_path(result.id)), :rel => "lightbox", class: "has-tooltip", :data => {:toggle=>"tooltip", :placement=>"auto"}, title: display_info(result) do %>
                     <%= image_tag result.file, class: '' %>
                 <% end %>
                 <div class="caption">

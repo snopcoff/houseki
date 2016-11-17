@@ -12,7 +12,7 @@
   <tbody>
   <% @fooddrinks.each do |fooddrink| %>
     <tr>
-        <td><%= link_to fooddrink.name, fooddrink_path(fooddrink.id) %></td>
+        <td><%= link_to fooddrink.name, fooddrink_path(fooddrink.id), :rel => "lightbox", class: "has-tooltip", :data => {:toggle=>"tooltip", :placement=>"auto"}, title: display_info(fooddrink) %></td>
         <td>
             <%= fooddrink.fd_type.name if fooddrink.fd_type.presence %>
         </td>

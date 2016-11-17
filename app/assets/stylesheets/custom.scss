@@ -119,6 +119,17 @@ div.auth-content:hover, div.auth-content:active, div.auth-content:focus {
   }
 }
 
+.has-tooltip {
+  white-space: pre-wrap;
+}
+
+.has-tooltip + .tooltip > .tooltip-inner {
+      white-space: pre-wrap;
+      background-color: white; 
+      color: black;
+      border: 1px solid blue;
+}
+
 /* comment */
 .comment-avatar {
   width: 100px;

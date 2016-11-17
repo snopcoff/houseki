@@ -12,7 +12,7 @@
     <div class="col-md-12">
         <% @fdall.each do |fd| %>
             <div class="col-md-4">
-                <%= link_to fooddrink_path(fd.id) do %>
+                <%= link_to fooddrink_path(fd.id), :rel => "lightbox", class: "has-tooltip", :data => {:toggle=>"tooltip", :placement=>"auto"}, title: display_info(fd) do %>
                     <%= image_tag(fd.file, class: "img-thumbnail avatar") %>
                 <% end %>
             </div>

@@ -1,7 +1,7 @@
 <h3 class="tt">Recommend Drinks</h3>
 <% @recommenddrink.first(3).each do |drink| %>
   <div class="col-md-4">
-    <%= link_to fooddrink_path(drink.id) do %>
+    <%= link_to fooddrink_path(drink.id), :rel => "lightbox", class: "has-tooltip", :data => {:toggle=>"tooltip", :placement=>"auto"}, title: display_info(drink) do %>
       <%= image_tag(drink.file, class: "img-thumbnail avatar") %>
     <% end %>
     <h4 class="div-co-name"><%= drink.name %>
