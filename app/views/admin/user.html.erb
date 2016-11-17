@@ -9,6 +9,12 @@
     </thead>
   </thead>
   <tbody>
+    <tr style="color: blue; font-weight: bold;">
+      <td><i class="entypo-pencil"></i><%= current_user.name %> (You)</td>
+      <td><%= current_user.email %></td>
+      <td><%= current_user.roles.first.name %></td>
+      <td></td>
+    </tr>
   <% @users.each do |user| %>
     <% if user.id != current_user.id %>
       <tr>

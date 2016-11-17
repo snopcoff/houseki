@@ -11,10 +11,12 @@ module ApplicationHelper
     end
     
     def display_info(fooddrink)
-        "<p><b>#{fooddrink.name}</b></p><p>Place: #{fooddrink.address}</p>
-        <p>Type: #{fooddrink.fd_type.name}</p><p>Price: #{fooddrink.price} 
-        #{fooddrink.price_unit}</p><p>#{truncate(fooddrink.review, length: 30)}
-        </p><p>By <i>#{fooddrink.user.name}</i></p>"
+        "<p><b>#{fooddrink.name}</b></p>
+        <p>Place: #{fooddrink.address}</p>
+        <p>Type: #{fooddrink.fd_type.name}</p>
+        <p>Price: #{fooddrink.price} #{fooddrink.price_unit}</p>
+        <p>#{truncate(fooddrink.review, length: 30)}</p>
+        <p>By <i>#{fooddrink.user.name}</i></p>"
     end
     
 end

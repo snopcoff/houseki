@@ -5,7 +5,7 @@
       <%= image_tag(drink.file, class: "img-thumbnail avatar") %>
     <% end %>
     <h4 class="div-co-name"><%= drink.name %>
-    <br>[ <%= drink.address %>]
+    <br><%= rating_for drink, "overall", readonly: true %>
     </h4>
   </div>
 <% end %>

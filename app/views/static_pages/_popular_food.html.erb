@@ -5,7 +5,8 @@
         <%= image_tag(food.file, class: "img-thumbnail cover") %>
       <% end %>
       <h4 class="div-co-name"><%= food.name %>
-      <br>[ <%= food.address %>]
+      <br>
+      <%= rating_for food, "overall", readonly: true %>
       </h4>
     </div>
 <% end %>
