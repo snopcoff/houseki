@@ -472,3 +472,18 @@ u.row l {
 .entypo-pencil:before {
   content: '\e836';
 } 
+
+// Rating star
+.imdb-wrapper {
+    position: relative;
+    font-weight: bold;
+    text-align: center;
+    &:hover {
+      color: black;
+    }
+    div {
+      position: absolute;
+      top: 20%;
+      width: 82px;
+    }
+}

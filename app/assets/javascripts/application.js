@@ -53,6 +53,7 @@ function fd_type_select() {
 
 function display_tooltip() {
   $('.has-tooltip').tooltip({html: true, container: "body"});
+  $('.imdb-wrapper').tooltip({html: true, container: "body"});
 }
 
 function initPage() {
