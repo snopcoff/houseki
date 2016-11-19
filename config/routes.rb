@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   root 'static_pages#home'
   match 'users/profile/:id' => 'users#show', via: :get, as: 'show_user'
 
-  devise_for :users, :controllers => {:omniauth_callbacks => "users/omniauth_callbacks"}
+  devise_for :users, :controllers => {:omniauth_callbacks => "users/omniauth_callbacks", :registrations => "users/registrations"}
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

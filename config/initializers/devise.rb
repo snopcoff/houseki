@@ -272,7 +272,7 @@ Devise.setup do |config|
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
   config.omniauth :facebook, "536599503203917", "5802f4364f2b1e379931d90d034fb082", 
-                  callback_url: "https://infinite-mountain-86348.herokuapp.com/users/auth/facebook/callback"
+                  callback_url: "https://houseki-tabemono-snopcoff.c9users.io/users/auth/facebook/callback"
   config.omniauth :twitter, "w8M89XmSxFkumQdrpzSGwww5F", "G46oHH0u6wEy1Dmqx6duHBlKzTYhDnz06QsjUFGBVVsR5Veg6S",
                   callback_url: "https://infinite-mountain-86348.herokuapp.com/users/auth/twitter/callback", 
                   :authorize_params => {:force_login => 'true'}
