@@ -1,10 +1,8 @@
 <h3>New Reviews</h3>
 <div class="row one-time">
   <% @fooddrinks.last(10).reverse.each do |fooddrink| %>
-      <div class="col-md-4">
-        <%= link_to fooddrink_path(fooddrink.id) do %>
-          <%= image_tag(fooddrink.file, class: "img-thumbnail avatar") %>
-        <% end %>
-      </div>
+      <%= link_to fooddrink_path(fooddrink.id) do %>
+        <%= image_tag(fooddrink.file, class: "img-thumbnail avatar") %>
+      <% end %>
   <% end %>
 </div>

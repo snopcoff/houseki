@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+<h1>Categories</h1>
+<%= link_to "Add new category", new_fd_type_path %>
+<table class="table table-bordered table-hover">
+  <thead>
+    <thead>
+      <tr>
+        <th>Food (<%= @foods.count %>)</th>
+      </tr>
+    </thead>
+  </thead>
+  <tbody>
+  <% @foods.each do |category| %>
+    <% if category.foodtype.eql?("food") %>
+        <tr>
+            <td><%= link_to category.name, fd_type_path(category.id) %></td>
+            <td>
+                <%= link_to 'Edit', edit_fd_type_path(category.id), class: "btn btn-primary" %>
+                <%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+            </td>
+        </tr>
+    <% end %>
+  <% end %>
+  </tbody>
+</table>
+
+<table class="table table-bordered table-hover">
+  <thead>
+    <thead>
+      <tr>
+        <th>Drink (<%= @drinks.count %>)</th>
+      </tr>
+    </thead>
+  </thead>
+  <tbody>
+  <% @drinks.each do |category| %>
+    <% if category.foodtype.eql?("drink") %>
+        <tr>
+            <td><%= link_to category.name, fd_type_path(category.id) %></td>
+            <td>
+                <%= link_to 'Edit', edit_fd_type_path(category.id), class: "btn btn-primary" %>
+                <%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+            </td>
+        </tr>
+    <% end %>
+  <% end %>
+  </tbody>
+</table>

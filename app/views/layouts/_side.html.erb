@@ -1,0 +1,31 @@
+
+<div class="categories">
+  <ul class="list-group" role="menu" aria-labelledby="dropdownMenu" style="font-size: 14px;">
+    <h3 style="color:#669900;"><%= link_to "DRINK", fd_list_path("drink") %></h3>
+    <% @fd_types.each do |type| %>
+        <% if type.foodtype=="drink" %>
+            <li class="list-group-item">
+              <%= link_to fd_type_path(type.id) do %>
+                  <%= type.name %>
+              <% end %>
+            </li>
+        <% end %>
+    <% end %>
+  </ul>
+
+  <ul class="list-group" role="menu" aria-labelledby="dropdownMenu" style="font-size: 14px;">
+    <h3 style="color:#669900;"><%= link_to "FOODS", fd_list_path("food") %></h3>
+    <% @fd_types.each do |type| %>
+        <% if type.foodtype=="food" %>
+            <li class="list-group-item">
+              <%= link_to fd_type_path(type.id) do %>
+                  <%= type.name %>
+              <% end %>
+
+            </li>
+        <% end %>
+    <% end %>
+  </ul>
+
+</div>
+

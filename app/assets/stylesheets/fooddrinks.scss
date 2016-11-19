@@ -12,7 +12,9 @@ $img-width: 100px;
   min-width: calc(3 * #{$img-width});
   height: calc(4 * #{$img-width});
 }
-
+.no-margin{
+  margin: 0;
+}
 $search-box: white;
 $search-text: black;
 $search-border-radius: 7px;
@@ -53,4 +55,16 @@ $search-border-radius: 7px;
   height: 30px;
   color: gray;
   text-align: right;
+}
+
+/* carousel */
+.one-time-fd {
+  div {
+    text-align: center;
+  }
+  
+  img {
+      height: 100px;
+      width: 100px;
+  }
 }

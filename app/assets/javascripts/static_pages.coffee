@@ -5,7 +5,7 @@
 jQuery(document).on 'turbolinks:load', ->
     $('.one-time').slick({
       dots: true,
-      slidesToShow: 3,
+      slidesToShow: 5,
       slidesToScroll: 1,
       touchMove: false
     });

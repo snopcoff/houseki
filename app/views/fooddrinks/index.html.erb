@@ -1,27 +1,56 @@
 <% if @results.presence %>
     <div class="row">
-        <div class="col-md-12">
-            <% @results.each do |result| %>
-                <div class="col-md-4">
-                    <%= link_to(fooddrink_path(result.id)) do %>
-                        <%= image_tag result.file, class: 'img-thumbnail' %><br />
-                        <%= result.name %><br />
-                        Type: 
-                        <% if result.foodtype %>
-                            Food
-                        <% else %>
-                            Drink
-                        <% end %><br />
-                        Author: <%= result.user.name %>
-                    <% end %>
+      <p>There is
+        <%= @results.length %>
+        results founded.
+      </p>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <% @results.each do |result| %>
+            <div class="col-sm-6 col-md-4">
+              <div class="thumbnail">
+                <%= link_to(fooddrink_path(result.id)) do %>
+                    <%= image_tag result.file, class: '' %>
+                <% end %>
+                <div class="caption">
+                  <label class="food-name">
+                    <%= result.name %>
+                  </label>
+                  <ul class=" list-unstyled">
+                    <li class="">
+                      <% if result.foodtype %>
+                          Food
+                      <% else %>
+                          Drink
+                      <% end %>
+                    </li>
+                    <li>
+                      <%=result.address %>
+                    </li>
+                  </ul>
+                  <hr class="no-margin">
+                  <div class="media">
+                    <div class="media-left ">
+                      <%= image_tag result.user.avatar_url, class: 'media-object small-avatar' %>
+                    </div>
+                    <div class="media-body">
+                      Created by: <%= link_to result.user.name, show_user_path(result.user.id) %>
+                      <p style="font-size: 9px;color: gray;font-style: italic;">
+                        <%=result.created_at %>
+                      </p>
+                    </div>
+                  </div>
                 </div>
-            <% end %>
-        </div>
-        
-        <div class="col-md-6 col-md-offset-3">
-            <%= will_paginate @results %>
-        </div>
+              </div>
+            </div>
+        <% end %>
+      </div>
+
+      <div class="col-md-6 col-md-offset-3">
+        <%= will_paginate @results %>
+      </div>
     </div>
 <% else %>
-Result not found.
+    Result not found.
 <% end %>

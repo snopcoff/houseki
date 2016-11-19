@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+<h1>Foods/Drinks <%= @fooddrinks.count %></h1>
+<table class="table table-bordered table-hover">
+  <thead>
+    <thead>
+      <tr>
+        <th>Name</th><th>Category</th><th>Created by</th>
+      </tr>
+    </thead>
+  </thead>
+  <tbody>
+  <% @fooddrinks.each do |fooddrink| %>
+    <tr>
+        <td><%= link_to fooddrink.name, fooddrink_path(fooddrink.id) %></td>
+        <td>
+            <%= fooddrink.fd_type.name if fooddrink.fd_type.presence %>
+        </td>
+        <td><%=link_to fooddrink.user.name, show_user_path(fooddrink.user.id) %></td>
+        <td>
+            <%= link_to 'Edit', edit_fooddrink_path(fooddrink.id), class: "btn btn-primary" %>
+            <%= link_to 'Delete', fooddrink, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+        </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

@@ -1,7 +1,7 @@
 <%= search_form_for @search, :html => {:class => "navbar-form"} do |f| %>
 
     <div class="form-group input-group search-box">
-      <%= f.text_field :name_cont, class: "radius-left expand form-control", placeholder: "Food/Drink name" %>
+      <%= f.text_field :name_cont, class: "radius-left form-control no-outline", placeholder: "Food/Drink name" %>
       <span class="input-group-addon " >
         <span class="glyphicon glyphicon-search"></span>
       </span>

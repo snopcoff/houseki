@@ -2,26 +2,39 @@ class AdminController < ApplicationController
   before_action :authenticate_user!
   before_action :authorized_for_admin
   
-  def index
+  def user
     @users = User.all
+  end
+  
+  def fooddrink
     @fooddrinks = Fooddrink.all
-    @categories = FdType.all
+  end
+  
+  def category
+    @foods = FdType.where(foodtype: "food")
+    @drinks = FdType.where(foodtype: "drink")
   end
 
   def update_user
     user = User.find(params[:id])
     if user.has_role? :admin
       user.remove_role :admin
+      notice = 'Remove admin role from "'+user.name+'" successfully.'
     else
       user.add_role :admin
+      notice = 'Set "'+user.name+'" as admin successfully.'
     end
     
-    redirect_to '/admin'
+    respond_to do |format|
+      format.html { redirect_to admin_user_url, notice: notice }
+      format.json { head :no_content }
+    end
   end
   
   def destroy_user
     user = User.find(params[:id])
     rates = Rate.where(:rater_id => user.id)
+    notice = '"'+user.name+'" was successfully removed.'
     fooddrinks = Fooddrink.all
     user.destroy
     rates.delete_all
@@ -33,7 +46,7 @@ class AdminController < ApplicationController
     end
     
     respond_to do |format|
-      format.html { redirect_to admin_url, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to admin_user_url, notice: notice }
       format.json { head :no_content }
     end
   end

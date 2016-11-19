@@ -1,11 +1,17 @@
 Rails.application.routes.draw do
   post '/rate' => 'rater#create', :as => 'rate'
+  
   resources :fd_types
-  get 'admin' => 'admin#index'
+  
+  get 'admin/user' => 'admin#user'
+  get 'admin/fooddrink' => 'admin#fooddrink'
+  get 'admin/category' => 'admin#category'
   put 'admin/user/:id' => 'admin#update_user'
   patch 'admin/user/:id' => 'admin#update_user'
   # delete 'admin/user/:id' => 'admin#destroy_user'
   match 'admin/user/:id' => 'admin#destroy_user', via: :delete, as: 'delete_user'
+  
+  get 'static_pages/:foodtype' => 'static_pages#fd_list', as: 'fd_list'
   
   # match 'admin/user/:id'
 

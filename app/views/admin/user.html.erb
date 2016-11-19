@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+<h1>Users (<%= @users.count %>)</h1>
+<table class="table table-bordered table-hover">
+  <thead>
+    <thead>
+      <tr>
+        <th>Name</th><th>Email</th><th>Role</th>
+      </tr>
+    </thead>
+  </thead>
+  <tbody>
+  <% @users.each do |user| %>
+    <% if user.id != current_user.id %>
+      <tr>
+          <td><%= link_to user.name, show_user_path(user.id) %></td>
+        <td><%= user.email %></td>
+        <td><%= user.roles.first.name if user.roles.first.presence %></td>
+        <td>
+          <%= form_tag("/admin/user/" + user.id.to_s, method: :PUT) do %>
+              <%= submit_tag is_admin(user), class: "btn btn-primary" %>
+          <% end %>
+          <%= button_to "Delete User", delete_user_path(user.id), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger" %>
+        </td>
+      </tr>
+    <% end %>
+  <% end %>
+  </tbody>
+</table>

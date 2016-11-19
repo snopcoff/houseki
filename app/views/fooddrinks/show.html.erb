@@ -6,9 +6,10 @@
   </div>
 
   <div class="col-md-8 ">
-    <h3><%= @fooddrink.foodtype ? "Food" : "Drink" %>'s Information
-      <% if user_signed_in? && @fooddrink.user_id == current_user.id %>
+    <h3><%= @fooddrink.name.capitalize %>
+      <% if user_signed_in? && (@fooddrink.user_id == current_user.id || (current_user.has_role? :admin)) %>
           <%= link_to 'Edit', edit_fooddrink_path(@fooddrink), class: "btn btn-primary" %>
+          <%= link_to 'Delete', @fooddrink, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
       <% end %>
     </h3>
     <div class="description-box">
@@ -20,16 +21,12 @@
         <% end %>
       </div>
       <div>
-        <label><%= @fooddrink.foodtype ? "Food" : "Drink" %>'s name: </label>
-        <%= @fooddrink.name %>
+        <label>Price: </label>
+        <%= @fooddrink.price %> <%= @fooddrink.price_unit %>
       </div>
       <div>
         <label>Place: </label>
         <%= @fooddrink.address %>
-      </div>
-      <div>
-        <label>Price: </label>
-        <%= @fooddrink.price %> <%= @fooddrink.price_unit %>
       </div>
 
       <% if @fooddrink.review.presence %>
@@ -51,7 +48,7 @@
 </div>
 
 <div>
-  <h3>Recommend</h3>
+  <h3>Recommend (<%= @recommends.count %>)</h3>
   <%= render 'fooddrinks/recommend.html.erb' %>
 </div>
 
