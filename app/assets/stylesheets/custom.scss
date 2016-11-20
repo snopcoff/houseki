@@ -19,7 +19,7 @@ textarea {
 }
 
 .background-image {
-  background-image: url("../bg.jpg");
+  // background-image: url("../bg.jpg");
   background-size: cover;
   display: block;
   filter: blur(5px);
@@ -109,6 +109,10 @@ div.auth-content:hover, div.auth-content:active, div.auth-content:focus {
 }
 
 /* foods drinks */
+.content {
+  background-color: #333;
+  margin-bottom: 20px;
+}
 .right-align {
   text-align: right;
 }
@@ -390,6 +394,7 @@ u.row l {
   font-family:cursive;
   font-size:30px;
   font-weight: bold;
+  color: grey;
 }
 .img-thumbnail {
   border-radius: 12px;
