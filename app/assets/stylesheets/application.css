@@ -159,7 +159,7 @@ body {
     background-size: cover;
 }
 
-.container:not(.nav-container) {
+.container:not(.nav-container){
     background-color: lightgrey;
 }
 

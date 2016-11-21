@@ -15,7 +15,7 @@
     </h3>
     <div class="description-box">
       <div>
-        <%= link_to "#", class: 'imdb-wrapper', :data => {toggle: "tooltip", placement: "right", title: "#{@fooddrink.qty} member(s) have voted for this."} do %>
+        <%= link_to "#", class: 'imdb-wrapper', :data => {toggle: "tooltip", placement: "bottom", title: "#{@fooddrink.qty} member(s) have voted for this."} do %>
           <%= image_tag "big-star.png" %>
            <div><p><%= @fooddrink.avg.round(2) %></p></div>
         <% end %>

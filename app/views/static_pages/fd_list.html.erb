@@ -2,13 +2,43 @@
 <link rel="stylesheet" href="//demo.neontheme.com/assets/css/neon-core.css" >
 <link rel="stylesheet" href="//demo.neontheme.com/assets/css/font-icons/entypo/css/entypo.css">
 
-<div class="page-container sidebar-collapsed">
-  <div class="col-md-3 left-side">
-    <%= render 'layouts/side' %>
+
+<style>
+body {
+   background-image: none !important;
+}
+.container {
+  background: none !important;
+}
+
+.container {
+  background: transparent !important;
+}
+
+</style>
+
+<script>
+    $(function(){
+        $('.page-body').parent().addClass('head-img');
+    })
+    </script>
+<p id="notice"><%= notice %></p>
+
+<div class="page-body" style="position:relative;display:flex;">
+  
+    <div class="col-md-3 left-side" style=""><!--position:fixed; margin-top: 30px;-->
+      <div class="page-container sidebar-collapsed" style=" width: auto;">
+      <%= render 'layouts/side' %>
+    </div>
   </div>
   
-  <div class="col-md-9 right-side">
-    <h1><%= @fd_type.capitalize %> List</h1>
+<!--<div class="page-container sidebar-collapsed">-->
+<!--  <div class="col-md-3 left-side">-->
+<!--    </%= render 'layouts/side' %>-->
+<!--  </div>-->
+  
+  <div class="col-md-9 right-side" style="background-color:#333;">
+    <h1 style="color:#aaabae;margin-left:20px;"><%= @fd_type.capitalize %> List</h1>
     <div class="col-md-12">
         <% @fdall.each do |fd| %>
             <div class="col-md-4">

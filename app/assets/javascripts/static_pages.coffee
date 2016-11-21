@@ -9,3 +9,8 @@ jQuery(document).on 'turbolinks:load', ->
       slidesToScroll: 1,
       touchMove: false
     });
+    $('.page-body').parent().addClass('head-img');
+    
+    # $('has-sub.root-level').on('click',function(){
+    #   alert("OK");
+    #   })
