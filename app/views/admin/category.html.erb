@@ -1,8 +1,10 @@
-<div class="col-md-9">
+<div class="col-md-9" style="margin-left:60px;">
 
 <p id="notice"><%= notice %></p>
 <h1>Categories</h1>
 <%= link_to "Add new category", new_fd_type_path, {:style => 'color: blue;font-weight:bold;text-decoration: underline;'} %>
+</br>
+
 <table class="table table-bordered table-hover">
   <thead>
     <thead>
@@ -30,7 +32,7 @@
   <thead>
     <thead>
       <tr>
-        <th>Drink (<%= @drinks.count %>)</th>
+        <th>Drink [<%= @drinks.count %>]</th>
       </tr>
     </thead>
   </thead>

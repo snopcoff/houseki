@@ -1,6 +1,6 @@
 
 <header>
-  <nav class="navbar navbar-fixed-top navbar-custom" style="position: absolute; z-index:-1;">
+  <nav class="navbar navbar-fixed-top navbar-custom" style="position: absolute;background-color: #303F9F;font-family: "Roboto Mono",Roboto,sans-serif;">
     <div class="container nav-container">
       <ul class="nav navbar-nav navbar-right">
         <li><%= render 'fooddrinks/fooddrink_search_box.html.erb' %></li>
@@ -39,6 +39,8 @@
     </div>
 
   </nav>
-      <div class="img-head"><img src="assets/theme.jpg" alt="theme" style="width:100%;height:auto;max-height:300px;border-bottom: 10px solid #333;" />
-</div>
+      
 </header>
+<div class="img-head" style="display: none;position: absolute; z-index: -1">
+  <img src="assets/theme.jpg" alt="theme" style="width:100%;height:350px;border-bottom: 10px solid #333;" />
+</div>

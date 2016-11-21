@@ -3,10 +3,24 @@
 <link rel="stylesheet" href="//demo.neontheme.com/assets/css/neon-core.css" >
 <link rel="stylesheet" href="//demo.neontheme.com/assets/css/font-icons/entypo/css/entypo.css">
 
+<style>
+body {
+   background-image: none !important;
+}
+.container {
+  background: none !important;
+}
 
+.container {
+  background: transparent !important;
+}
+.img-head {
+  display: inline !important;
+}
+</style>
 <p id="notice"><%= notice %></p>
 
-<div class="page-body img-head" style="position:relative;display:flex;">
+<div class="page-body" style="position:relative;display:flex;">
   
     <div class="col-md-3 left-side" style=""><!--position:fixed; margin-top: 30px;-->
       <div class="page-container sidebar-collapsed" style=" width: auto;">
@@ -14,7 +28,7 @@
     </div>
   </div>
 
-  <div class="col-md-9 right-side" style=" float:right;">
+  <div class="col-md-9 right-side" style=" float:right;color:white;">
     <div class="col-md-12 content">
       <%= render "static_pages/new_reviews.html.erb" %>
     </div>

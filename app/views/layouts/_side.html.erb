@@ -1,13 +1,32 @@
 <div class="sidebar-menu left-side" style="width:250px;">
-	  <article class="menu"><%= link_to "MENU", root_path %></article><br>
+    <img src="assets/logo001.gif" alt="logo" style="display: block; width:170px;margin: 0 auto;margin-top:20px;"/>
+	  <br><br><article class="menu"><%= link_to "MENU", root_path, {:style=>"color:#BB5501"} %></article><br>
     
-		<div class=" categories sidebar-menu-inner" style="width:100%;">
+    <div class=" categories sidebar-menu-inner" style="width:100%;">
       
-      <ul id="main-menu" class="temp main-menu"  style="font-size: 14px;width:100%;">
-       <h3 class="menu-fooddrink"><%= link_to "DRINKS", fd_list_path("drink") %></h3>
+        <ul id="main-menu" class="temp main-menu"  style="font-size: 14px;width:100%;">
+            
+       <li class="active active has-sub root-level">
+       
+       <h3 class="menu-fooddrink"><%= link_to "FOODS", fd_list_path("food"), {:style => "margin-left:10px;"} %></h3>
+       <ul class="">
         <% @fd_types.each do |type| %>
-          <% if type.foodtype=="drink" %>
+        <% if type.foodtype=="food" %>
             <li class="">
+              <%= link_to fd_type_path(type.id) do %>
+                  <%= type.name %>
+              <% end %>
+            </li>
+        <% end %>
+        <% end %>
+        </ul>
+        </li>
+        
+      
+               <h3 class="menu-fooddrink"><%= link_to "DRINKS", fd_list_path("drink") %></h3>
+                <% @fd_types.each do |type| %>
+                 <% if type.foodtype=="drink" %>
+                <li class="">
               <%= link_to fd_type_path(type.id) do %>
                   <%= type.name %>
               <% end %>
@@ -20,19 +39,7 @@
         </li>
         <% end %>
         <% end %>
-      </ul>
-      
-      <ul  id="main-menu" class="temp main-menu" style="font-size: 14px;width:100%;">
-       <h3 class="menu-fooddrink"><%= link_to "FOODS", fd_list_path("food") %></h3>
-        <% @fd_types.each do |type| %>
-        <% if type.foodtype=="food" %>
-            <li class="">
-              <%= link_to fd_type_path(type.id) do %>
-                  <%= type.name %>
-              <% end %>
-            </li>
-        <% end %>
-        <% end %>
+        
       </ul>
       
     </div>

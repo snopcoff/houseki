@@ -155,12 +155,12 @@
 
 
 body {
-    /*background-image: url("../bg.jpg");*/
+    background-image: url("../bg.jpg");
     background-size: cover;
 }
 
-.container:not(.nav-container) {
-    /*background-color: lightgrey;*/
+.container:not(.nav-container){
+    background-color: lightgrey;
 }
 
  /*new review*/
