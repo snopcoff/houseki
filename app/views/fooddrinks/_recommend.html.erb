@@ -2,8 +2,8 @@
   <% @recommends.each do |fooddrink| %>
     <div class="col-sm-3 col-md-2">
       <div class="thumbnail">
-        <%= link_to fooddrink_path(fooddrink.id), :rel => "lightbox", class: "has-tooltip", :data => {:toggle=>"tooltip", :placement=>"bottom"}, title: display_info(fooddrink) do %>
-            <%= image_tag(fooddrink.file, class: "img-thumbnail") %>
+        <%= link_to fooddrink_path(fooddrink.id), :rel => "lightbox", class: "has-tooltip", :data => {:toggle=>"tooltip", :placement=>"auto"}, title: display_info(fooddrink) do %>
+            <%= image_tag(fooddrink.file, class: " cover") %>
         <% end %>
         <div class="caption">
           <label class="food-name"><%= truncate(fooddrink.name, length: 25) %></label>
@@ -16,9 +16,3 @@
   <% end %>
   <div class="clearfix"></div>
 </div>
-
-<style>
-.thumbnail {
-  background-color: grey !important;
-}
-</style>

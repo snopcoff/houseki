@@ -3,41 +3,24 @@
 <link rel="stylesheet" href="//demo.neontheme.com/assets/css/neon-core.css" >
 <link rel="stylesheet" href="//demo.neontheme.com/assets/css/font-icons/entypo/css/entypo.css">
 
-<style>
-body {
-   background-image: none !important;
-}
-.container {
-  background: none !important;
-}
 
-.container {
-  background: transparent !important;
-}
-.img-head {
-  display: inline !important;
-}
-</style>
 <p id="notice"><%= notice %></p>
 
-<div class="page-body" style="position:relative;display:flex;">
-  
-    <div class="col-md-3 left-side" style=""><!--position:fixed; margin-top: 30px;-->
-      <div class="page-container sidebar-collapsed" style=" width: auto;">
-      <%= render 'layouts/side' %>
-    </div>
+<div class="page-container sidebar-collapsed">
+  <div class="col-md-3 left-side">
+    <%= render 'layouts/side' %>
   </div>
-
-  <div class="col-md-9 right-side" style=" float:right;color:white;">
-    <div class="col-md-12 content">
+  
+  <div class="col-md-9 right-side">
+    <div class="col-md-12">
       <%= render "static_pages/new_reviews.html.erb" %>
     </div>
     
-    <div class="col-md-12 content">
+    <div class="col-md-12">
       <%= render "static_pages/popular_food.html.erb" %>
     </div>
     
-    <div class="col-md-12 content">
+    <div class="col-md-12">
       <%= render "static_pages/popular_drink.html.erb" %>
     </div>
   </div>
