@@ -10,16 +10,32 @@
       </ul>
     </div>
   <% end %>
+  
+  <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="form-group">
+          <%= f.label "Category item name", class: "col-md-4 control-label" %>
+          <div class="col-md-8">
+            <%= f.text_field :name, class: "form-control" %>
+          </div>
+        </div>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :foodtype %><br>
-    <%= f.select :foodtype, options_for_select(["food", "drink"]) %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+        <div class="form-group">
+          <%= f.label "Type", class: "col-md-4 control-label" %>
+          <div class="col-md-8">
+            <%= f.select :foodtype, options_for_select(["food", "drink"]), {}, {:class => "form-control"} %>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="center">
+      <div class="actions">
+        <div class="col-md-2 col-md-offset-5">
+          <%= f.submit "Submit", class: "btn btn-primary" %>
+          <%= link_to 'Back', admin_category_path, class: "btn btn-default" %>
+        </div>
+      </div>
+    </div>
 <% end %>
