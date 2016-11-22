@@ -19,4 +19,9 @@ module ApplicationHelper
         <p>By <i>#{fooddrink.user.name}</i></p>"
     end
     
+    def user_avatar(user)
+        return user.avatar_url if user.avatar?
+        "default_avatar.png"
+    end
+    
 end
