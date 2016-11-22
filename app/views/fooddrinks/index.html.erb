@@ -10,37 +10,13 @@
         <% @results.each do |result| %>
             <div class="col-sm-6 col-md-4">
               <div class="thumbnail">
-                <%= link_to(fooddrink_path(result.id)), :rel => "lightbox", class: "has-tooltip", :data => {:toggle=>"tooltip", :placement=>"auto"}, title: display_info(result) do %>
+                <%= link_to fooddrink_path(result.id), :rel => "lightbox", class: "has-tooltip", :data => {:toggle=>"tooltip", :placement=>"auto"}, title: display_info(result) do %>
                     <%= image_tag result.file, class: '' %>
                 <% end %>
-                <div class="caption">
+                <div class="caption center">
                   <label class="food-name">
                     <%= result.name %>
                   </label>
-                  <ul class=" list-unstyled">
-                    <li class="">
-                      <% if result.foodtype %>
-                          Food
-                      <% else %>
-                          Drink
-                      <% end %>
-                    </li>
-                    <li>
-                      <%=result.address %>
-                    </li>
-                  </ul>
-                  <hr class="no-margin">
-                  <div class="media">
-                    <div class="media-left ">
-                      <%= image_tag result.user.avatar_url, class: 'media-object small-avatar' %>
-                    </div>
-                    <div class="media-body">
-                      Created by: <%= link_to result.user.name, show_user_path(result.user.id) %>
-                      <p style="font-size: 9px;color: gray;font-style: italic;">
-                        <%=result.created_at %>
-                      </p>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
