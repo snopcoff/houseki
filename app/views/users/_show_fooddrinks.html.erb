@@ -2,9 +2,11 @@
     <div class="col-md-12">
         <% @fooddrinks.each do |fooddrink| %>
             <div class="col-md-4 users-show-fooddrink">
-                <%= link_to fooddrink_path(fooddrink.id), :rel => "lightbox", class: "has-tooltip", :data => {:toggle=>"tooltip", :placement=>"auto"}, title: display_info(fooddrink) do %>
-                    <%= image_tag(fooddrink.file, class: "avatar img-thumbnail") %>
-                <% end %>
+                <div class="thumbnail-list">
+                    <%= link_to fooddrink_path(fooddrink.id), :rel => "lightbox", class: "has-tooltip", :data => {:toggle=>"tooltip", :placement=>"auto"}, title: display_info(fooddrink) do %>
+                        <%= image_tag(fooddrink.file, class: "img-thumbnail") %>
+                    <% end %>
+                </div>
             </div>
         <% end %>
     </div>

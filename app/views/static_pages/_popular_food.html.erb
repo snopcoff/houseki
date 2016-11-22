@@ -1,9 +1,11 @@
 <h3 class="tt">Recommend Foods</h3>
 <% @recommendfood.first(3).each do |food| %>
     <div class="col-md-4">
-      <%= link_to fooddrink_path(food.id), :rel => "lightbox", class: "has-tooltip", :data => {:toggle=>"tooltip", :placement=>"auto"}, title: display_info(food) do %>
-        <%= image_tag(food.file, class: "img-thumbnail avatar") %>
-      <% end %>
+      <div class="thumbnail-list">
+        <%= link_to fooddrink_path(food.id), :rel => "lightbox", class: "has-tooltip", :data => {:toggle=>"tooltip", :placement=>"auto"}, title: display_info(food) do %>
+          <%= image_tag(food.file, class: "img-thumbnail avatar") %>
+        <% end %>
+      </div>
       <h4 class="div-co-name"><%= food.name %>
       <br>
       <%= rating_for food, "overall", readonly: true, star: 5 %>

@@ -391,13 +391,20 @@ u.row l {
   font-size:30px;
   font-weight: bold;
 }
+
+.thumbnail-list {
+  background-color: transparent;
+}
+.thumbnail-list > img, .thumbnail-list a > img {
+  height: 150px;
+}
+
 .img-thumbnail {
   border-radius: 12px;
   overflow: hidden;
   background-size: cover;
   background-position: center;
-  height: 300px;
-  max-width: 200px;
+  width: 100%;
 }
 .div-co-name {
   text-align:center;
