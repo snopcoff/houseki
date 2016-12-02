@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161103063448) do
+ActiveRecord::Schema.define(version: 20161202123033) do
 
   create_table "average_caches", force: :cascade do |t|
     t.integer  "rater_id"
@@ -23,6 +23,26 @@ ActiveRecord::Schema.define(version: 20161103063448) do
   end
 
   add_index "average_caches", ["rater_id", "rateable_id", "rateable_type"], name: "average_caches_index"
+
+  create_table "club_members", force: :cascade do |t|
+    t.integer  "club_id"
+    t.integer  "user_id"
+    t.boolean  "is_moderator", default: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  add_index "club_members", ["club_id"], name: "index_club_members_on_club_id"
+  add_index "club_members", ["user_id"], name: "index_club_members_on_user_id"
+
+  create_table "clubs", force: :cascade do |t|
+    t.string   "name"
+    t.string   "club_avatar"
+    t.text     "description"
+    t.integer  "club_event_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
 
   create_table "commontator_comments", force: :cascade do |t|
     t.string   "creator_type"

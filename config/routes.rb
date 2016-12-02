@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :clubs
   post '/rate' => 'rater#create', :as => 'rate'
   
   resources :fd_types
@@ -82,6 +83,7 @@ Rails.application.routes.draw do
   #   end
   
   Commontator::Engine.routes.draw do
+  resources :clubs
   post '/rate' => 'rater#create', :as => 'rate'
   resources :threads, :only => [:show] do
     resources :comments, :except => [:index, :destroy], :shallow => true do

@@ -12,6 +12,12 @@ class User < ActiveRecord::Base
   acts_as_commontator
   
   ratyrate_rater
+  
+  has_many :club_members
+  has_many :clubs, :through => :club_members
+  accepts_nested_attributes_for :club_members,
+                :allow_destroy => true
+  accepts_nested_attributes_for :clubs
          
   validates :name, presence: true
   
