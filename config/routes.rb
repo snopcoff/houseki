@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   match 'admin/user/:id' => 'admin#destroy_user', via: :delete, as: 'delete_user'
   
   get 'static_pages/:foodtype' => 'static_pages#fd_list', as: 'fd_list'
+  put 'clubs/join/:id' => 'clubs#join_club'
+  patch 'clubs/join/:id' => 'clubs#join_club'
   
   # match 'admin/user/:id'
 
@@ -20,7 +22,7 @@ Rails.application.routes.draw do
   resources :fd_types
   resources :fooddrinks
   # get 'users/show'
-  
+  resources :clubs
   mount Commontator::Engine => '/commontator'
 
   root 'static_pages#home'
@@ -83,8 +85,7 @@ Rails.application.routes.draw do
   #   end
   
   Commontator::Engine.routes.draw do
-  resources :clubs
-  post '/rate' => 'rater#create', :as => 'rate'
+  # post '/rate' => 'rater#create', :as => 'rate'
   resources :threads, :only => [:show] do
     resources :comments, :except => [:index, :destroy], :shallow => true do
       member do

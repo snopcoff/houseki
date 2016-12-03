@@ -1,24 +1,27 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @club.name %>
-</p>
+<div class="row">
+  <div class="col-md-2">
+    <%= image_tag(@club.club_avatar, style: "height: 100px; width: 100px;") %>
+  </div>
+  <div class="col-md-10">
+    <h3><%= @club.name %></h3>
+    <p><%= @club.description %></p>
+  </div>
+</div>
 
-<p>
-  <strong>Club avatar:</strong>
-  <%= @club.club_avatar %>
-</p>
+<% if user_signed_in? %>
+  <%= form_tag("/clubs/join/" + @club.id.to_s, method: :PUT) do %>
+      <%= submit_tag is_member(@club, current_user), class: "btn btn-primary" %>
+  <% end %>
+<% end %>
+<% if @club.club_event_id.presence %>
+  <p>
+    <strong>Club event:</strong>
+    <%= @club.club_event_id %>
+  </p>
+<% end %>
 
-<p>
-  <strong>Description:</strong>
-  <%= @club.description %>
-</p>
-
-<p>
-  <strong>Club event:</strong>
-  <%= @club.club_event_id %>
-</p>
 
 <%= link_to 'Edit', edit_club_path(@club) %> |
 <%= link_to 'Back', clubs_path %>
