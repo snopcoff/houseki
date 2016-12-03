@@ -31,7 +31,7 @@ class ClubsController < ApplicationController
       if @club.save
         format.html { redirect_to @club, notice: 'Successfully create club.' }
         format.json { render :show, status: :created, location: @club }
-        ClubMember.create(:club_id => @club.id, :user_id => current_user.id)
+        ClubMember.create(:club_id => @club.id, :user_id => current_user.id, :is_moderator => true)
       else
         format.html { render :new }
         format.json { render json: @club.errors, status: :unprocessable_entity }

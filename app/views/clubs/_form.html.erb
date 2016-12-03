@@ -17,7 +17,8 @@
   </div>
   <div class="field">
     <%= f.label :club_avatar %><br>
-    <%= f.text_field :club_avatar %>
+    <%= f.file_field :club_avatar %>
+    <%= f.hidden_field :club_avatar_cache %>
   </div>
   <div class="field">
     <%= f.label :description %><br>
