@@ -6,7 +6,7 @@
         <div class="col-md-4 left-side">
             <div class="col-md-10 pull-right">
                 <div>
-                    <%= image_tag(user_avatar(@user), class: 'avatar') %>
+                    <%= image_tag(@user.avatar_url, class: 'avatar') %>
                 </div>
                 <h3><%= @user.name %></h3>
                 Email: <%= @user.email %><br />
