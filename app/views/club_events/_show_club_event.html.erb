@@ -1,0 +1,22 @@
+<% club_event = @club.club_events.first %>
+<h3>Event: <%= club_event.name %></h3>
+<p><%= club_event.description %></p>
+<p>From: <%= club_event.from_date %> To: <%= club_event.to_date %></p>
+<% if @club.club_members.find_by(is_moderator: true).user_id == current_user.id  %>
+    <%= button_tag "Edit", type: 'button', class: 'btn btn-info', data: {toggle: 'modal', target: '#myEditModal'} %>
+    <div class="modal fade" id="myEditModal" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <%= button_tag(type: 'button', class: 'close', data: {dismiss: 'modal'}) do %>
+              &times;
+            <% end %>
+            <h4 class="modal-title">Edit Event</h4>
+          </div>
+          <div class="modal-body">
+            <%= render '/club_events/edit_club_event' %>
+          </div>
+        </div>
+      </div>
+    </div>
+<% end %>
