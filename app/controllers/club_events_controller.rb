@@ -31,6 +31,11 @@ class ClubEventsController < ApplicationController
         end
     end
     
+    def destroy
+        @club_event.destroy
+        redirect_to @club, notice: 'Event deleted.'
+    end
+    
     private
     def club_event_params
         params.require(:club_event).permit(:user_id, :name, :description, :from_date, :to_date)
