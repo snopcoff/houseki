@@ -14,6 +14,10 @@ class AdminController < ApplicationController
     @foods = FdType.where(foodtype: "food")
     @drinks = FdType.where(foodtype: "drink")
   end
+  
+  def club
+    @clubs = Club.all
+  end
 
   def update_user
     user = User.find(params[:id])
