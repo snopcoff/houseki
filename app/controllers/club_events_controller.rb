@@ -16,7 +16,7 @@ class ClubEventsController < ApplicationController
         @club_event = @club.club_events.new(club_event_params)
         
         if @club_event.save
-            @club.club_events.first.destroy
+            @club.club_events.first.destroy if @club.club_events.count > 1
             redirect_to @club, notice: 'Successfully create event.'
           else
             redirect_to :back, notice: @club_event.errors[:base][0]

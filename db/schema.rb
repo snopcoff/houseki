@@ -178,25 +178,25 @@ ActiveRecord::Schema.define(version: 20161204110502) do
   add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at"
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "",                   null: false
-    t.string   "encrypted_password",     default: "",                   null: false
+    t.string   "email",                  default: "",   null: false
+    t.string   "encrypted_password",     default: "",   null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,                    null: false
+    t.integer  "sign_in_count",          default: 0,    null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                                            null: false
-    t.datetime "updated_at",                                            null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.string   "name",                   default: ""
     t.boolean  "gender",                 default: true
     t.string   "address",                default: ""
     t.text     "hobbies",                default: ""
     t.string   "provider"
     t.string   "uid"
-    t.string   "avatar",                 default: "default_avatar.png"
+    t.string   "avatar"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

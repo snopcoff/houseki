@@ -38,10 +38,12 @@ class AdminController < ApplicationController
   def destroy_user
     user = User.find(params[:id])
     rates = Rate.where(:rater_id => user.id)
+    clubs = user.clubs.where(:club_members => {is_moderator: true})
     notice = '"'+user.name+'" was successfully removed.'
     fooddrinks = Fooddrink.all
     user.destroy
     rates.delete_all
+    clubs.delete_all
     
     fooddrinks.each do |fooddrink|
       Fooddrink.update_avg_qty(fooddrink)
