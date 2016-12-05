@@ -12,6 +12,8 @@ class ClubsController < ApplicationController
   # GET /clubs/1
   # GET /clubs/1.json
   def show
+    @club_event = @club.club_events.first
+    # @club_event.destroy if @club_event.to_date < Time.now
   end
 
   # GET /clubs/new
@@ -89,7 +91,7 @@ class ClubsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def club_params
-      params.require(:club).permit(:name, :club_avatar, :description, :club_event_id)
+      params.require(:club).permit(:name, :club_avatar, :description)
     end
     
     def get_moderator

@@ -1,0 +1,24 @@
+<%= form_for([@club, ClubEvent.new]) do |f| %>
+
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :from_date %><br>
+    <%= f.datetime_select :from_date %>
+  </div>
+  <div class="field">
+    <%= f.label :to_date %><br>
+    <%= f.datetime_select :to_date %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+  
+<% end %>

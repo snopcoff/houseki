@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :clubs
   post '/rate' => 'rater#create', :as => 'rate'
   
   resources :fd_types
@@ -22,7 +21,10 @@ Rails.application.routes.draw do
   resources :fd_types
   resources :fooddrinks
   # get 'users/show'
-  resources :clubs
+  resources :clubs do
+    resources :club_events
+  end
+  
   mount Commontator::Engine => '/commontator'
 
   root 'static_pages#home'
