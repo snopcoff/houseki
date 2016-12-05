@@ -19,5 +19,5 @@
         </div>
       </div>
     </div>
-    <%= link_to 'Delete', @club_event, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+    <%= link_to 'Delete', [@club, @club_event], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
 <% end %>

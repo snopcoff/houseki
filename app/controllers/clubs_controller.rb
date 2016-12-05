@@ -13,6 +13,7 @@ class ClubsController < ApplicationController
   # GET /clubs/1.json
   def show
     @club_event = @club.club_events.first
+    # @club_event.destroy if @club_event.to_date < Time.now
   end
 
   # GET /clubs/new

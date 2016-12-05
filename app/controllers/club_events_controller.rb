@@ -13,9 +13,10 @@ class ClubEventsController < ApplicationController
     end
     
     def create
-        @club_event = @club.club_event.new(club_event_params)
+        @club_event = @club.club_events.new(club_event_params)
         
         if @club_event.save
+            @club.club_events.first.destroy
             redirect_to @club, notice: 'Successfully create event.'
           else
             redirect_to :back, notice: @club_event.errors[:base][0]

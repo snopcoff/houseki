@@ -18,8 +18,8 @@
       <%= submit_tag is_member(@club, current_user), class: "btn btn-primary" %>
   <% end %>
   
-  <% if @club.club_members.find_by(is_moderator: true).user_id == current_user.id  %>
-    <%= button_tag "Open Modal", type: 'button', class: 'btn btn-info', data: {toggle: 'modal', target: '#myNewModal'} %>
+  <% if @club.club_members.find_by(is_moderator: true).user_id == current_user.id %>
+    <%= button_tag "Add Event", type: 'button', class: 'btn btn-info', data: {toggle: 'modal', target: '#myNewModal'} %>
     <div class="modal fade" id="myNewModal" role="dialog">
       <div class="modal-dialog">
         <div class="modal-content">
