@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'admin/user' => 'admin#user'
   get 'admin/fooddrink' => 'admin#fooddrink'
   get 'admin/category' => 'admin#category'
+  get 'admin/club' => 'admin#club'
   put 'admin/user/:id' => 'admin#update_user'
   patch 'admin/user/:id' => 'admin#update_user'
   # delete 'admin/user/:id' => 'admin#destroy_user'

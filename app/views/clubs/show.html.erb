@@ -11,14 +11,12 @@
 </div>
 
 <% if user_signed_in? %>
-
-  <%= @club.club_members.find_by(is_moderator: true).user_id == current_user.id %>
   
   <%= form_tag("/clubs/join/" + @club.id.to_s, method: :PUT) do %>
-      <%= submit_tag is_member(@club, current_user), class: "btn btn-primary" %>
+      <%= submit_tag is_member, class: "btn btn-primary" %>
   <% end %>
   
-  <% if @club.club_members.find_by(is_moderator: true).user_id == current_user.id %>
+  <% if can_manage %>
     <%= button_tag "Add Event", type: 'button', class: 'btn btn-info', data: {toggle: 'modal', target: '#myNewModal'} %>
     <div class="modal fade" id="myNewModal" role="dialog">
       <div class="modal-dialog">
@@ -35,14 +33,17 @@
         </div>
       </div>
     </div>
+    <%= button_to "Delete Club", @club, data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger" %>
   <% end %>
 <% end %>
 
+<% if can_view %>
 <div>
   <% if @club.club_events.presence %>
     <%= render 'club_events/show_club_event' %>
   <% end %>
 </div>
+<% end %>
 
 <%= link_to 'Edit', edit_club_path(@club) %> |
 <%= link_to 'Back', clubs_path %>

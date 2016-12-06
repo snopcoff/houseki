@@ -18,7 +18,11 @@
     <%= f.datetime_select :to_date %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <% if @club.club_events.presence %>
+      <%= f.submit "Add event", data: {confirm: "This will overwrite current event. Are you sure?"} %>
+    <% else %>
+      <%= f.submit "Add event" %>
+    <% end %>
   </div>
   
 <% end %>

@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+<h1>Clubs (<%= @clubs.count %>)</h1>
+<table class="table table-bordered table-hover">
+  <thead>
+    <thead>
+      <tr>
+        <th>Name</th><th>Moderator</th><th>Number of Members</th><th>Description</th>
+      </tr>
+    </thead>
+  </thead>
+  <tbody>
+      <% @clubs.each do |club| %>
+          <% moderator = club.club_members.find_by(is_moderator: true).user %>
+          <tr>
+            <td><%= link_to club.name, club_path(club.id) %></td>
+            <td><%= link_to moderator.name, show_user_path(moderator.id) %></td>
+            <td><%= club.club_members.count %></td>
+            <td><%= truncate(club.description, length: 100) %></td>
+            <td style="display:flex;">
+              <%= button_to "Delete Club", club, data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger" %>
+            </td>
+          </tr>
+      <% end %>
+  </tbody>
+</table>
