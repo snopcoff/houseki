@@ -8,7 +8,7 @@ end
 
 class ClubEvent < ActiveRecord::Base
     belongs_to :club, polymorphic: true
-    belongs_to :user
+    has_and_belongs_to_many :users
     
     validates_with DateTimeValidator
 end

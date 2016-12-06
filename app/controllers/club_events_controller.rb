@@ -37,6 +37,17 @@ class ClubEventsController < ApplicationController
         redirect_to @club, notice: 'Event deleted.'
     end
     
+    def join_club_event
+        
+        if current_user.club_events.find_by(club_id: @club_event).presence
+          @club_event.users.delete(current_user)
+          redirect_to @club, notice: "You will not go to this event."
+        else
+          @club_event.users << current_user
+          redirect_to @club, notice: "You will go to this event."
+        end
+    end
+    
     private
     def club_event_params
         params.require(:club_event).permit(:user_id, :name, :description, :from_date, :to_date)

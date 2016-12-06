@@ -1,8 +1,8 @@
-<% club_event = @club.club_events.first %>
-<h3>Event: <%= club_event.name %></h3>
-<p><%= club_event.description %></p>
-<p>From: <%= club_event.from_date %> To: <%= club_event.to_date %></p>
-<% if @club.club_members.find_by(is_moderator: true).user_id == current_user.id  %>
+<h3>Event: <%= @club_event.name %></h3>
+<p><%= @club_event.description %></p>
+<p>From: <%= @club_event.from_date %> To: <%= @club_event.to_date %></p>
+<p><%= @club_event.users.count %> members is going.</p>
+<% if can_manage  %>
     <%= button_tag "Edit", type: 'button', class: 'btn btn-info', data: {toggle: 'modal', target: '#myEditModal'} %>
     <div class="modal fade" id="myEditModal" role="dialog">
       <div class="modal-dialog">
@@ -20,4 +20,7 @@
       </div>
     </div>
     <%= link_to 'Delete', [@club, @club_event], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+<% end %>
+<%= form_tag("/clubs/" + @club.id.to_s + "/club_events/join/" + @club_event.id.to_s, method: :PUT) do %>
+    <%= submit_tag has_join, class: "btn btn-primary" %>
 <% end %>

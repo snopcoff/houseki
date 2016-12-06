@@ -9,6 +9,10 @@ module ClubsHelper
     end
     
     def can_view
-        is_member || can_manage
+        current_user.club_members.find_by(club_id: @club.id).presence || can_manage
+    end
+    
+    def has_join
+        @club_event.users.find_by(id: current_user.id).presence ? "Not going" : "Going"
     end
 end

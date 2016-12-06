@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   
   has_many :club_members, :dependent => :destroy
   has_many :clubs, :through => :club_members
-  has_many :club_events
+  has_and_belongs_to_many :club_events
   accepts_nested_attributes_for :club_members,
                 :allow_destroy => true
   accepts_nested_attributes_for :clubs
