@@ -1,4 +1,8 @@
-<p id="notice"><%= notice %></p>
+<% if notice.class.to_s == 'Array' %> 
+  <p id="login_error"><%= notice[0] %></p>
+<% else %>
+  <p id="notice"><%= notice %></p>
+<% end %>
 
 <div class="row">
   <div class="col-md-2">

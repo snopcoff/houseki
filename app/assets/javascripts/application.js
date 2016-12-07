@@ -68,11 +68,6 @@ function initPage() {
         toastr.error(login_error.text());
         login_error.hide();
     }
-    var other_error = $('#other_error');
-    if (other_error.text() != "") {
-        toastr.error(other_error.text());
-        other_error.hide();
-    }
     var errors = $('#error_explanation ul li');
     if (!jQuery.isEmptyObject(errors)) {
         errors.each(function (i, obj) {

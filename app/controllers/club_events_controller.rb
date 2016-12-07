@@ -15,26 +15,44 @@ class ClubEventsController < ApplicationController
     def create
         @club_event = @club.club_events.new(club_event_params)
         
-        if @club_event.save
+        respond_to do |format|
+            
+          if @club_event.save
             @club.club_events.first.destroy if @club.club_events.count > 1
-            redirect_to @club, notice: 'Successfully create event.'
+            format.html { redirect_to @club, notice: 'Successfully create event.' }
+            format.json { head :no_content }
           else
-            redirect_to :back, notice: @club_event.errors[:base][0]
+            format.html { redirect_to :back, notice: @club_event.errors[:base] }
+            format.json { render json: @club_event.errors[:base], status: :unprocessable_entity }
             ## render json: @club_event.errors, status: :unprocessable_entity
+          end
+          
         end
+        
     end
     
     def update
-        if @club_event.update(club_event_params)
-            redirect_to @club, notice: 'Club was successfully updated.'
-        else
-            redirect_to :back, notice: @club_event.errors[:base][0]
+        respond_to do |format|
+            
+          if @club_event.update(club_event_params)
+            format.html { redirect_to @club, notice: 'Club was successfully updated.' }
+            format.json { render :show, status: :ok, location: @club }
+          else
+            format.html { redirect_to :back }
+            format.json { render json: @club_event.errors[:base], status: :unprocessable_entity }
+          end
+          
         end
+        
     end
     
     def destroy
         @club_event.destroy
-        redirect_to @club, notice: 'Event deleted.'
+        
+        respond_to do |format|
+          format.html { redirect_to @club, notice: 'Club was successfully destroyed.' }
+          format.json { head :no_content }
+        end
     end
     
     def join_club_event
