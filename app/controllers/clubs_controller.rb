@@ -1,6 +1,6 @@
 class ClubsController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :update, :destroy, :join_club]
-  before_action :set_club, only: [:show, :edit, :update, :destroy, :join_club]
+  before_action :set_club, only: [:show, :edit, :update, :destroy, :join_club, :kick_out_user]
   before_action :get_moderator, only: [:show, :edit, :update, :destroy]
 
   # GET /clubs
@@ -69,7 +69,7 @@ class ClubsController < ApplicationController
   
   def join_club
     if current_user.club_members.find_by(club_id: @club.id).presence
-      @club.club_members.find_by(user_id: current_user.id).destroy
+      @club.users.delete(current_user)
       notice = "You have left this club."
     else
       @club.users << current_user
@@ -78,6 +78,17 @@ class ClubsController < ApplicationController
     
     respond_to do |format|
       format.html { redirect_to @club, notice: notice }
+      format.json { head :no_content }
+    end
+  end
+  
+  def kick_out_user
+    user = @club.users.find(params[:member_id])
+    @club.club_events.first.users.delete(user) if @club.club_events.presence && user.club_events.find_by(club_id: @club.id).presence
+    @club.users.delete(user)
+    
+    respond_to do |format|
+      format.html { redirect_to @club, notice: "Successfully kick out this member." }
       format.json { head :no_content }
     end
   end

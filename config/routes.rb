@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   put 'clubs/join/:id' => 'clubs#join_club'
   patch 'clubs/join/:id' => 'clubs#join_club'
   
+  match 'clubs/:id/member/:member_id' => 'clubs#kick_out_user', via: :delete, as: 'kick_out_user'
+  # delete 'clubs/:id/member' => 'clubs#kick_out_user'
   # match 'admin/user/:id'
 
   # get 'admin/update_user'

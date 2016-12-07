@@ -14,22 +14,7 @@
 <% end %>
 <p><%= @club_event.users.count %> members is going.</p>
 <% if can_manage  %>
-    <%= button_tag "Edit", type: 'button', class: 'btn btn-info', data: {toggle: 'modal', target: '#myEditModal'} %>
-    <div class="modal fade" id="myEditModal" role="dialog">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <%= button_tag(type: 'button', class: 'close', data: {dismiss: 'modal'}) do %>
-              &times;
-            <% end %>
-            <h4 class="modal-title">Edit Event</h4>
-          </div>
-          <div class="modal-body">
-            <%= render '/club_events/edit_club_event' %>
-          </div>
-        </div>
-      </div>
-    </div>
+    <%= render 'club_events/modify_club_event' %>
     <%= link_to 'Delete', [@club, @club_event], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
 <% end %>
 <%= form_tag("/clubs/" + @club.id.to_s + "/club_events/join/" + @club_event.id.to_s, method: :PUT) do %>

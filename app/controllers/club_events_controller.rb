@@ -38,7 +38,7 @@ class ClubEventsController < ApplicationController
             format.html { redirect_to @club, notice: 'Club was successfully updated.' }
             format.json { render :show, status: :ok, location: @club }
           else
-            format.html { redirect_to :back }
+            format.html { redirect_to :back, notice: @club_event.errors[:base] }
             format.json { render json: @club_event.errors[:base], status: :unprocessable_entity }
           end
           
