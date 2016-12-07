@@ -23,7 +23,10 @@ Rails.application.routes.draw do
   resources :fooddrinks
   # get 'users/show'
   resources :clubs do
+    
     resources :club_events
+    put 'club_events/join/:id' => 'club_events#join_club_event'
+    patch 'club_events/join/:id' => 'club_events#join_club_event'
   end
   
   mount Commontator::Engine => '/commontator'

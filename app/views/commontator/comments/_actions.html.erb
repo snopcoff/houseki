@@ -17,5 +17,5 @@
 &nbsp;
 
 <% if can_delete %>
-  <%= link_to 'Delete', delete_comment_path(comment.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+  <%= link_to 'Delete', commontator.delete_comment_path(comment.id), method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>

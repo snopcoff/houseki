@@ -38,11 +38,14 @@
 <% end %>
 
 <% if can_view %>
-<div>
-  <% if @club.club_events.presence %>
-    <%= render 'club_events/show_club_event' %>
-  <% end %>
-</div>
+  <div>
+    <% if @club.club_events.presence %>
+      <%= render 'club_events/show_club_event' %>
+    <% end %>
+  </div>
+  <div>
+    <%= commontator_thread(@club) %>
+  </div>
 <% end %>
 
 <%= link_to 'Edit', edit_club_path(@club) %> |

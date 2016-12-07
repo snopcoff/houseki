@@ -9,4 +9,6 @@ class Club < ActiveRecord::Base
     has_many :club_events
     accepts_nested_attributes_for :club_events
     validates :name, presence: true
+    
+    acts_as_commontable
 end
