@@ -1,31 +1,39 @@
-
-<div class="categories">
-  <ul class="list-group" role="menu" aria-labelledby="dropdownMenu" style="font-size: 14px;">
-    <h3 style="color:#669900;"><%= link_to "DRINK", fd_list_path("drink") %></h3>
-    <% @fd_types.each do |type| %>
-        <% if type.foodtype=="drink" %>
-            <li class="list-group-item">
+<div class="sidebar-menu left-side" style="width:250px;">
+	  <article class="menu">MENU</article><br>
+    
+		<div class=" categories sidebar-menu-inner" style="width:100%;">
+      
+      <ul id="main-menu" class="temp main-menu"  style="font-size: 14px;width:100%;">
+       <h3 class="menu-fooddrink"><%= link_to "DRINKS", fd_list_path("drink") %></h3>
+        <% @fd_types.each do |type| %>
+          <% if type.foodtype=="drink" %>
+            <li class="">
               <%= link_to fd_type_path(type.id) do %>
                   <%= type.name %>
               <% end %>
-            </li>
+            
+          <!--<ul class="">-->
+          <!--  <li class=""><a tabindex="-1" href="#">Second level</a></li>-->
+          <!--  <li><a href="#">Second level</a></li>-->
+          <!--  <li><a href="#">Second level</a></li>-->
+          <!--</ul>-->
+        </li>
         <% end %>
-    <% end %>
-  </ul>
-
-  <ul class="list-group" role="menu" aria-labelledby="dropdownMenu" style="font-size: 14px;">
-    <h3 style="color:#669900;"><%= link_to "FOODS", fd_list_path("food") %></h3>
-    <% @fd_types.each do |type| %>
+        <% end %>
+      </ul>
+      
+      <ul  id="main-menu" class="temp main-menu" style="font-size: 14px;width:100%;">
+       <h3 class="menu-fooddrink"><%= link_to "FOODS", fd_list_path("food") %></h3>
+        <% @fd_types.each do |type| %>
         <% if type.foodtype=="food" %>
-            <li class="list-group-item">
+            <li class="">
               <%= link_to fd_type_path(type.id) do %>
                   <%= type.name %>
               <% end %>
-
             </li>
         <% end %>
-    <% end %>
-  </ul>
-
-</div>
-
+        <% end %>
+      </ul>
+      
+    </div>
+  </div>

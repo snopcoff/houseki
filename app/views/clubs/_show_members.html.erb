@@ -1,0 +1,16 @@
+<%= link_to "#{@club.users.count} member(s)", '#', data: {toggle: 'modal', target: '#myMembersModal'} %>
+<div class="modal fade" id="myMembersModal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <%= button_tag(type: 'button', class: 'close', data: {dismiss: 'modal'}) do %>
+          &times;
+        <% end %>
+        <h4 class="modal-title"><%= @club.name %>'s members</h4>
+      </div>
+      <div class="modal-body">
+        <%= render 'members_list' %>
+      </div>
+    </div>
+  </div>
+</div>

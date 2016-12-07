@@ -20,10 +20,14 @@
 <span id="thread_<%= thread.id %>_span" class="thread_span">
   <span id="thread_<%= thread.id.to_s %>_actions_span" class="thread_actions">
     <span id="thread_<%= thread.id.to_s %>_hide_span" class="thread_hide commontator_hidden">
-      <%= link_to t('commontator.thread.actions.hide'),
-                  '#',
-                  id: "thread_#{thread.id.to_s}_hide_link",
-                  class: "thread_hide_link" %>
+      <% if thread.commontable_type == "Fooddrink" %>
+        <%= link_to '#',
+                    id: "thread_#{thread.id.to_s}_hide_link",
+                    class: "thread_hide_link btn btn-primary" do %>
+          <span class="glyphicon glyphicon-eye-close"></span>
+          <%= t('commontator.thread.actions.hide') %>
+        <% end %>
+      <% end %>
     </span>
 
     &nbsp;
@@ -53,7 +57,7 @@
         &nbsp;
       <% end %>
 
-      <%= link_to t("commontator.thread.actions.#{close_string}"),
+      <%#= link_to t("commontator.thread.actions.#{close_string}"),
                   commontator.polymorphic_path([close_string, thread]),
                   :confirm => (!is_closed ? t('commontator.thread.actions.confirm_close') : nil),
                   :method => :put,

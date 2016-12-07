@@ -65,7 +65,7 @@ Commontator.configure do |config|
   #              user, 1, :s => 60, :d => 'mm') }
   config.user_avatar_proc = lambda { |user, view|
                                      view.image_tag(
-                                       user.avatar_url, class: 'comment-avatar') }
+                                       user.avatar? ? user.avatar_url : "default_avatar.png", class: 'comment-avatar') }
 
   # user_email_proc
   # Type: Proc
@@ -191,7 +191,7 @@ Commontator.configure do |config|
   # Not yet implemented:
   #   :n (link to the form; opens in a new window)
   # Default: :l
-  config.new_comment_style = :l
+  config.new_comment_style = :t
 
   # comments_per_page
   # Type: Fixnum or nil

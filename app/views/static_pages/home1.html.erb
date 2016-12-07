@@ -1,0 +1,24 @@
+<link rel="stylesheet" href="//demo.neontheme.com/assets/css/bootstrap.css" >
+<link rel="stylesheet" href="//demo.neontheme.com/assets/css/neon-core.css" >
+
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+  <div class="col-md-3 left-side">
+    <%= render 'layouts/side' %>
+  </div>
+  
+  <div class="col-md-9 right-side">
+    <div class="col-md-12">
+      <%= render "static_pages/new_reviews.html.erb" %>
+    </div>
+    
+    <div class="col-md-12">
+      <%= render "static_pages/popular_food.html.erb" %>
+    </div>
+    
+    <div class="col-md-12">
+      <%= render "static_pages/popular_drink.html.erb" %>
+    </div>
+  </div>
+</div>

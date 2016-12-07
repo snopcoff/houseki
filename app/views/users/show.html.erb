@@ -3,10 +3,10 @@
         <%= getname(@user, current_user) %> Profile
     </h1>
     <div class="row">
-        <div class="col-md-4 left-side">
-            <div>
+        <div class="col-md-3 left-side">
+            <div class="col-md-10 pull-right">
                 <div>
-                    <%= image_tag(@user.avatar_url, class: 'avatar') if @user.avatar? %>
+                    <%= image_tag(@user.avatar_url, class: 'avatar') %>
                 </div>
                 <h3><%= @user.name %></h3>
                 Email: <%= @user.email %><br />
@@ -23,13 +23,28 @@
                     Hobbies: <%= @user.hobbies %><br />
                 <% end %>
                 <% if user_signed_in? && current_user.id == @user.id %>
-                <%= link_to "Change Profile", edit_user_registration_path %>
+                <%= link_to "Change Profile", edit_user_registration_path,  {:style => 'color: blue;font-weight:bold;text-decoration: underline;'} %>
                 <% end %>
             </div>
         </div>
-        <div class="col-md-8 right-side">
-            <h3><%= getname(@user, current_user) %> Reviews</h3>
-            <%= render 'users/show_fooddrinks.html.erb' %>
+        <div class="col-md-9 right-side">
+            <div>
+                <h3><%= getname(@user, current_user) %> Reviews (<%= @user.fooddrinks.count %>)</h3>
+                <%= render 'users/show_fooddrinks.html.erb' %>
+            </div>
+            <div>
+                <h3>
+                    <%= getname(@user, current_user) %>
+                    Clubs (<%= @own_clubs.count %>)
+                </h3>
+                <%= render 'show_clubs.html.erb' %>
+            </div>
+            <div>
+                <h3><%= getname(@user, current_user) %> joining clubs 
+                (<%= @join_clubs.count %>)</h3>
+                <%= render 'show_joining_clubs.html.erb' %>
+            </div>
         </div>
     </div>
 </div>
+</br></br>

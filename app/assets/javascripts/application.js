@@ -51,6 +51,11 @@ function fd_type_select() {
     }
 }
 
+function display_tooltip() {
+  $('.has-tooltip').tooltip({html: true, container: "body"});
+  $('.imdb-wrapper').tooltip({html: true, container: "body"});
+}
+
 function initPage() {
     toastr.options = options;
     var notice = $('#notice');
@@ -79,3 +84,7 @@ function initPage() {
 document.addEventListener("turbolinks:load", function() {
     initPage();
 })
+
+$(document).ready(display_tooltip);
+$(document).on('page:change',display_tooltip);
+$(document).on('turbolinks:load',display_tooltip);

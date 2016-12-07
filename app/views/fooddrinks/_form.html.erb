@@ -39,24 +39,23 @@
 
         <div class="form-group">
           <%= f.label "Category", class: "col-md-4 control-label" %>
-          <div class="col-md-8">
+          <div class="col-md-4">
             <%= f.select :fd_type_id, options_for_select(@categories.map { |c| [c.name, c.id, {'data-type' => c.foodtype}] }) ,{}, {:class => "hidden",:disabled => true,:id => "fd-select-data"} %>
 
             <%= f.select :fd_type_id, options_for_select(@categories.map { |c| [c.name, c.id, {'data-type' => c.foodtype}] }) ,{}, {:class => "form-control"} %>
-
           </div>
         </div>
 
         <div class="form-group">
           <%= f.label :price, class: "col-md-4 control-label" %>
-          <div class="col-md-8">
-            <div class="col-md-6">
-              <%= f.number_field :price, class: "col-md-6 form-control" %>
+          <!--<div class="col-md-8">-->
+            <div class="col-md-4">
+              <%= f.number_field :price, class: "col-md-4 form-control" %>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
               <%= f.select :price_unit, options_for_select(["vnd", "dollar", "euro", "yen"]), {}, {:class => "form-control"} %>
             </div>
-          </div>
+          <!--</div>-->
         </div>
 
         <div class="form-group">
@@ -71,8 +70,8 @@
       <div class="col-md-6">
         <div class="form-group">
           <%= f.label :review, class: "col-md-3 control-label" %>
-          <div class="col-md-9">
-            <%= f.text_area :review, class: "form-control", rows: 15 %>
+          <div class="col-md-8">
+            <%= f.text_area :review, class: "form-control", rows: 13 %>
           </div>
         </div>
       </div>

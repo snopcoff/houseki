@@ -1,0 +1,16 @@
+<%= button_tag "Add Event", type: 'button', class: 'btn btn-info', data: {toggle: 'modal', target: '#myNewModal'} %>
+<div class="modal fade" id="myNewModal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <%= button_tag(type: 'button', class: 'close', data: {dismiss: 'modal'}) do %>
+          &times;
+        <% end %>
+        <h4 class="modal-title">Create Event</h4>
+      </div>
+      <div class="modal-body">
+        <%= render '/club_events/new_club_event' %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -139,15 +139,17 @@ module Commontator
     # Reader capabilities (user can be nil or false)
     def can_be_read_by?(user)
       return true if can_be_edited_by?(user)
-      !commontable.nil? &&\
-      config.thread_read_proc.call(self, user)
+      (!commontable.nil? &&\
+      config.thread_read_proc.call(self, user)) ||\
+      (commontable_type=="Club" && user.club_members.find_by(club_id: commontable_id).presence)
     end
 
     # Thread moderator capabilities
     def can_be_edited_by?(user)
       !commontable.nil? && !user.nil? && (user.is_commontator &&\
       config.thread_moderator_proc.call(self, user) || (user.has_role? :admin) ||\
-      user.id==commontable.user_id)
+      (commontable_type!="Club" && user.id==commontable.user_id) || \
+      (commontable_type=="Club" && user.id==commontable.club_members.find_by(is_moderator: true).user_id))
     end
 
     def can_subscribe?(user)

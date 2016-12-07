@@ -1,0 +1,42 @@
+<% if notice.class.to_s == 'Array' %> 
+  <p id="login_error"><%= notice[0] %></p>
+<% else %>
+  <p id="notice"><%= notice %></p>
+<% end %>
+
+<div class="row">
+  <div class="col-md-2">
+    <%= image_tag(@club.club_avatar, style: "height: 100px; width: 100px;") %>
+  </div>
+  <div class="col-md-10">
+    <h3><%= @club.name %></h3>
+    <p><%= @club.description %></p>
+    <p><%= render 'show_members' %></p>
+  </div>
+</div>
+
+<% if user_signed_in? %>
+  
+  <% unless current_user == @moderator %>
+    <%= form_tag("/clubs/join/" + @club.id.to_s, method: :PUT) do %>
+        <%= submit_tag is_member, class: "btn btn-primary" %>
+    <% end %>
+  <% end %>
+  
+  <% if can_manage %>
+    <%= render 'add_event' %>
+    <%= link_to 'Edit', edit_club_path(@club), class: "btn btn-primary" %>
+    <%= button_to "Delete Club", @club, data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger" %>
+  <% end %>
+  
+  <% if can_view %>
+    <div>
+      <% if @club.club_events.presence %>
+        <%= render 'club_events/show_club_event' %>
+      <% end %>
+    </div>
+    <div>
+      <%= commontator_thread(@club) %>
+    </div>
+  <% end %>
+<% end %>

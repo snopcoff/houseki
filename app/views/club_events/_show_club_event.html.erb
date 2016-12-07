@@ -1,0 +1,22 @@
+<h3>Event: <%= @club_event.name %></h3>
+<p><%= @club_event.description %></p>
+<% if @club_event.from_date.strftime('%A') == @club_event.to_date.strftime('%A') %>
+  <p>
+    In <%= @club_event.from_date.strftime('%A, %d/%m/%Y') %>
+    From <%= @club_event.from_date.strftime('%H:%M') %> 
+    To <%= @club_event.to_date.strftime('%H:%M') %>
+  </p>
+<% else %>
+  <p>
+    From: <%= @club_event.from_date.strftime('%A, %d/%m/%Y at %H:%M') %>
+    To: <%= @club_event.to_date.strftime('%A, %d/%m/%Y at %H:%M') %>
+  </p>
+<% end %>
+<p><%= render 'club_events/show_members_going' %></p>
+<% if can_manage  %>
+    <%= render 'club_events/modify_club_event' %>
+    <%= link_to 'Delete', [@club, @club_event], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+<% end %>
+<%= form_tag("/clubs/" + @club.id.to_s + "/club_events/join/" + @club_event.id.to_s, method: :PUT) do %>
+    <%= submit_tag has_join, class: "btn btn-primary" %>
+<% end %>

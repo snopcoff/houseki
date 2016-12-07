@@ -1,0 +1,38 @@
+<table class="table table-bordered table-hover">
+  <thead>
+  </thead>
+  <tbody>
+      <!--
+    <tr style="color: blue; font-weight: bold;">
+      <td><i class="entypo-pencil"></i><%#= current_user.name %> (You)</td>
+      <td><%#= current_user.email %></td>
+      <td><%#= current_user.roles.first.name %></td>
+      <td></td>
+    </tr>
+    -->
+  <% @club.users.each do |user| %>
+      <tr>
+        <td>
+            <%= link_to user.name, show_user_path(user.id) %>
+            <% if user == @moderator %>
+                <p class="btn btn-warning btn-xs">Moderator</p>
+            <% end %>
+            <% if user.has_role? :admin %>
+                <p class="btn btn-danger btn-xs">Admin</p>
+            <% end %>
+        </td>
+        
+        <% if user_signed_in? && can_manage %>
+            <td style="display:flex;">
+              <%#= form_tag("/clubs/" + @club.id.to_s + "user" + @club_event.id.to_s, method: :PUT) do %>
+                <%#= submit_tag "Kick this member out", class: "btn btn-danger" %>
+              <%# end %>
+              <% unless ((user == @moderator) || (user.has_role? :admin)) %>
+                  <%= button_to "Kick this member out", kick_out_user_path(@club.id, user.id), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger" %>
+              <% end %>
+            </td>
+        <% end %>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

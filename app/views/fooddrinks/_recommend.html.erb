@@ -2,7 +2,7 @@
   <% @recommends.each do |fooddrink| %>
     <div class="col-sm-3 col-md-2">
       <div class="thumbnail">
-        <%= link_to fooddrink_path(fooddrink.id) do %>
+        <%= link_to fooddrink_path(fooddrink.id), :rel => "lightbox", class: "has-tooltip", :data => {:toggle=>"tooltip", :placement=>"auto"}, title: display_info(fooddrink) do %>
             <%= image_tag(fooddrink.file, class: " cover") %>
         <% end %>
         <div class="caption">

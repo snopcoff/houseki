@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+  <div class="col-md-12">
+    <% @clubs.each do |club| %>
+        <div class="col-sm-6 col-md-4">
+          <div class="thumbnail" style="background-color: transparent;">
+            <%= link_to club_path(club.id), :rel => "lightbox", class: "has-tooltip", :data => {:toggle=>"tooltip", :placement=>"auto"}, title: club_info(club) do %>
+                <%= image_tag club.club_avatar, class: 'img-responsive avatar' %>
+            <% end %>
+            <div class="caption center">
+              <label class="food-name">
+                <%= club.name %>
+              </label>
+            </div>
+          </div>
+        </div>
+    <% end %>
+  </div>
+
+  <div class="col-md-6 col-md-offset-3">
+    <%= will_paginate @clubs %>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  club_id: 1
+  user_id: 1
+  name: MyString
+  description: MyText
+  from_date: 2016-12-04 11:05:03
+  to_date: 2016-12-04 11:05:03
+
+two:
+  club_id: 1
+  user_id: 1
+  name: MyString
+  description: MyText
+  from_date: 2016-12-04 11:05:03
+  to_date: 2016-12-04 11:05:03

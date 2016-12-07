@@ -5,17 +5,28 @@
 
 <% if thread.can_be_read_by?(user) %>
   <div id="thread_<%= thread.id %>_div" class="thread" style="display: none;">
-    <% if @commontator_thread_show %>
-      <%= render :partial => 'commontator/threads/show',
-                 :locals => { :thread => thread,
-                              :user => user,
-                              :page => @commontator_page,
-                              :per_page => @commontator_per_page } %>
+    <% if thread.commontable_type != "Club" %>
+      <% if @commontator_thread_show %>
+        <%= render :partial => 'commontator/threads/show',
+                   :locals => { :thread => thread,
+                                :user => user,
+                                :page => @commontator_page,
+                                :per_page => @commontator_per_page } %>
+      <% else %>
+        <% subscription = thread.subscription_for(user) %>
+        <%= link_to commontator.thread_path(thread), :remote => true, class: 'btn btn-primary' do %>
+          <span class="glyphicon glyphicon-eye-open"></span>
+          <%= "#{t 'commontator.thread.actions.show'} (#{(subscription.unread_comments.count.to_s + '/') if subscription}#{thread.filtered_comments.count.to_s})" %>
+        <% end %>
+      <% end %>
     <% else %>
-      <% subscription = thread.subscription_for(user) %>
-      <%= link_to "#{t 'commontator.thread.actions.show'} (#{(subscription.unread_comments.count.to_s + '/') if subscription}#{thread.filtered_comments.count.to_s})",
-                  commontator.thread_path(thread),
-                  :remote => true %>
+      <% if (user.has_role? :admin) || thread.commontable.club_members.find_by(user_id: user.id).presence %>
+        <%= render :partial => 'commontator/threads/show',
+                     :locals => { :thread => thread,
+                                  :user => user,
+                                  :page => @commontator_page,
+                                  :per_page => @commontator_per_page } %>
+      <% end %>
     <% end %>
   </div>
 <% end %>

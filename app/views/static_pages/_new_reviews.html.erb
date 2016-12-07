@@ -1,8 +1,14 @@
-<h3>New Reviews</h3>
-<div class="row one-time">
-  <% @fooddrinks.last(10).reverse.each do |fooddrink| %>
-      <%= link_to fooddrink_path(fooddrink.id) do %>
-        <%= image_tag(fooddrink.file, class: "img-thumbnail avatar") %>
-      <% end %>
+
+<h3 class="tt" style="font-size:20px;background-color:orange;">New Review</h3>
+  <div class="div-co row one-time">
+    <% @fooddrinks.last(6).reverse.each do |fooddrink| %>
+      <div class="col-md-3">
+        <div class="thumbnail" style="background-color: transparent;">
+          <%= link_to fooddrink_path(fooddrink.id), :rel => "lightbox", class: "has-tooltip", :data => {:toggle=>"tooltip", :placement=>"auto"}, title: display_info(fooddrink) do %>
+            <%= image_tag(fooddrink.file, class: "img-thumbnail avatar") %>
+          <% end %>
+          <h4 class="div-co-name"><%= fooddrink.name %></h4>
+        </div>
+      </div>
   <% end %>
 </div>

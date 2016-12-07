@@ -1,0 +1,18 @@
+<%= link_to "#{@club_event.users.count} member(s) is going", '#', data: {toggle: 'modal', target: '#myGoingMembersModal'} %>
+<div class="modal fade" id="myGoingMembersModal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <%= button_tag(type: 'button', class: 'close', data: {dismiss: 'modal'}) do %>
+          &times;
+        <% end %>
+        <h4 class="modal-title">Going members</h4>
+      </div>
+      <div class="modal-body">
+        <% @club_event.users.each do |user| %>
+          <p><%= link_to user.name, show_user_path(user.id) %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

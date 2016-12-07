@@ -1,7 +1,16 @@
-<% @fooddrinks.each do |fooddrink| %>
-    <div class="col-md-4">
-        <%= link_to fooddrink_path(fooddrink.id) do %>
-            <%= image_tag(fooddrink.file, class: "img-thumbnail avatar") %>
+<div class="row">
+    <div class="col-md-12">
+        <% @fooddrinks.each do |fooddrink| %>
+            <div class="col-md-4 users-show-fooddrink">
+                <div class="thumbnail-list">
+                    <%= link_to fooddrink_path(fooddrink.id), :rel => "lightbox", class: "has-tooltip", :data => {:toggle=>"tooltip", :placement=>"auto"}, title: display_info(fooddrink) do %>
+                        <%= image_tag(fooddrink.file, class: "img-thumbnail") %>
+                    <% end %>
+                </div>
+            </div>
         <% end %>
     </div>
-<% end %>
+    <div class="col-md-6 col-md-offset-3">
+        <%= will_paginate @fooddrinks %>
+    </div>
+</div>

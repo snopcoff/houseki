@@ -1,0 +1,104 @@
+<div class="page-container sidebar-collapsed" >
+	<div class="sidebar-menu left-side" style="width:250px;">
+	  <article class="menu">MENU</article><br>
+    
+		<div class=" categories sidebar-menu-inner">
+      
+      <ul id="main-menu" class="temp main-menu"  style="font-size: 14px;">
+       <h3 style="color:#669900;">DRINKS</h3>
+        <% @fd_types.each do |type| %>
+        <% if type.foodtype=="drink" %>
+        <li class="">
+           <%= link_to fooddrink_path(type.id) do %>
+              <%= type.name %>
+            <% end %>
+          <ul class="">
+            
+            <li class=""><a tabindex="-1" href="#">Second level</a></li>
+            <li><a href="#">Second level</a></li>
+            <li><a href="#">Second level</a></li>
+          </ul>
+        </li>
+        <% end %>
+        <% end %>
+        
+      </ul>
+      
+      <ul  id="main-menu" class="temp main-menu" style="font-size: 14px;">
+       <h3 style="color:#669900;">FOODS</h3>
+        <% @fd_types.each do |type| %>
+        <% if type.foodtype=="food" %>
+        <li class="">
+           <%= link_to fd_type_path(type.id) do %>
+              <%= type.name %>
+            <% end %>
+          <ul class="">
+            
+            <li class=""><a tabindex="-1" href="#">Second level</a></li>
+            <li><a href="#">Second level</a></li>
+            <li><a href="#">Second level</a></li>
+          </ul>
+        </li>
+        <% end %>
+        <% end %>
+      </ul>
+      
+    </div>
+  </div>
+  
+  <!---->
+  <!-- New Review should be a slide show (NOW BE LACKED)-->
+  <!---->
+  
+ <div class="col-md-12 right-side">
+    <div class="col-md-12">
+      <h3 class="tt" style="font-size:20px;background-color:orange;">New Review</h3>
+      <div class="div-co">
+      <% @fooddrinks.last(6).each do |fooddrink| %>
+      <div class="col-md-2">
+          <div class="text-center"  style="height-max:100px;">
+          <%= link_to fooddrink_path(fooddrink.id) do %>
+            <%= image_tag(fooddrink.file, class: "img-thumbnail cover") %>
+          <% end %>
+          </div>
+          <h4 class="div-co-name"><%= fooddrink.name %></h4>
+        </div>
+      <% end %>
+    </div>
+    </div>
+    <br>
+    
+     <div class=""><div class="col-md-12">
+      <h3 class="tt">Foods</h3>
+      <% @fooddrinks.each do |food| %>
+          <% if food.foodtype %>
+            <div class="col-md-4">
+              <%= link_to fooddrink_path(food.id) do %>
+                <%= image_tag(food.file, class: "img-thumbnail cover") %>
+              <% end %>
+              <h4 class="div-co-name"><%= food.name %>
+              <br>[ <%= food.address %>]
+              </h4>
+            </div>
+          <% end %>
+      <% end %>
+    </div>
+    
+    <div class="col-md-12">
+      <h3 class="tt">Drinks</h3>
+      <% @fooddrinks.each do |drink| %>
+        <% if !drink.foodtype %>
+          <div class="col-md-4">
+            <%= link_to fooddrink_path(drink.id) do %>
+              <%= image_tag(drink.file, class: "img-thumbnail cover") %>
+            <% end %>
+            <h4 class="div-co-name"><%= drink.name %>
+            <br>[<%= drink.address %>]
+            </h4>
+            
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

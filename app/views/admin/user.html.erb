@@ -9,17 +9,26 @@
     </thead>
   </thead>
   <tbody>
+    <tr style="color: blue; font-weight: bold;">
+      <td><i class="entypo-pencil"></i><%= current_user.name %> (You)</td>
+      <td><%= current_user.email %></td>
+      <td><%= current_user.roles.first.name %></td>
+      <td></td>
+    </tr>
   <% @users.each do |user| %>
     <% if user.id != current_user.id %>
       <tr>
-          <td><%= link_to user.name, show_user_path(user.id) %></td>
+          <td>
+            <i class="entypo-pencil"></i><%= link_to user.name, show_user_path(user.id) %></td>
         <td><%= user.email %></td>
         <td><%= user.roles.first.name if user.roles.first.presence %></td>
-        <td>
+        <td style="display:flex;">
+          <div class="col-md-6">
           <%= form_tag("/admin/user/" + user.id.to_s, method: :PUT) do %>
               <%= submit_tag is_admin(user), class: "btn btn-primary" %>
-          <% end %>
-          <%= button_to "Delete User", delete_user_path(user.id), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger" %>
+          <% end %></div>
+          <div class="col-md-6"><%= button_to "Delete User", delete_user_path(user.id), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger" %>
+         </div>
         </td>
       </tr>
     <% end %>

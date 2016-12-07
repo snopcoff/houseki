@@ -1,19 +1,23 @@
-<p id="notice"><%= notice %></p>
+<link rel="stylesheet" href="//demo.neontheme.com/assets/css/bootstrap.css" >
+<link rel="stylesheet" href="//demo.neontheme.com/assets/css/neon-core.css" >
+<link rel="stylesheet" href="//demo.neontheme.com/assets/css/font-icons/entypo/css/entypo.css">
 
-<div class="row">
+<div class="page-container sidebar-collapsed">
   <div class="col-md-3 left-side">
     <%= render 'layouts/side' %>
   </div>
+  
   <div class="col-md-9 right-side">
     <h1><%= @fd_type.name %></h1>
     <div class="col-md-12">
       <% @fooddrinks.each do |food| %>
           <div class="col-md-4">
-            <%= link_to fooddrink_path(food.id) do %>
+            <%= link_to fooddrink_path(food.id), :rel => "lightbox", class: "has-tooltip", :data => {:toggle=>"tooltip", :placement=>"auto"}, title: display_info(food) do %>
                 <%= image_tag(food.file, class: "img-thumbnail cover") %>
             <% end %>
           </div>
       <% end %>
+      <!--<h4 class="div-co-name"></%= food.name %></h4>-->
     </div>
 
     <div class="col-md-6 col-md-offset-3">

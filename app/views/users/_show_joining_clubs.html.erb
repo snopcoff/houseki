@@ -1,0 +1,14 @@
+<div class="row one-time">
+    <% @user.clubs.where(:club_members => {is_moderator: false}).each do |club| %>
+      <div class="col-md-3">
+          <div class="text-center"  style="height-max:50px;">
+            <div class="thumbnail" style="background-color: transparent;">
+              <%= link_to club_path(club.id), :rel => "lightbox", class: "has-tooltip", :data => {:toggle=>"tooltip", :placement=>"auto"}, title: club_info(club) do %>
+                <%= image_tag(club.club_avatar, class: "img-responsive avatar") %>
+                <div class="caption"><%= club.name %></div>
+              <% end %>
+            </div>
+          </div>
+      </div>
+  <% end %>
+</div>
