@@ -1,6 +1,17 @@
 <h3>Event: <%= @club_event.name %></h3>
 <p><%= @club_event.description %></p>
-<p>From: <%= @club_event.from_date %> To: <%= @club_event.to_date %></p>
+<% if @club_event.from_date.strftime('%A') == @club_event.to_date.strftime('%A') %>
+  <p>
+    In <%= @club_event.from_date.strftime('%A, %d/%m/%Y') %>
+    From <%= @club_event.from_date.strftime('%H:%M') %> 
+    To <%= @club_event.to_date.strftime('%H:%M') %>
+  </p>
+<% else %>
+  <p>
+    From: <%= @club_event.from_date.strftime('%A, %d/%m/%Y at %H:%M') %>
+    To: <%= @club_event.to_date.strftime('%A, %d/%m/%Y at %H:%M') %>
+  </p>
+<% end %>
 <p><%= @club_event.users.count %> members is going.</p>
 <% if can_manage  %>
     <%= button_tag "Edit", type: 'button', class: 'btn btn-info', data: {toggle: 'modal', target: '#myEditModal'} %>

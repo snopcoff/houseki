@@ -1,7 +1,7 @@
 class DateTimeValidator < ActiveModel::Validator
   def validate(record)
     if record.from_date >= record.to_date
-      record.errors[:base] << "Wrong date input"
+      record.errors[:base] = "Wrong date input"
     end
   end
 end
