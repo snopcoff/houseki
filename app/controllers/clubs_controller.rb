@@ -2,11 +2,12 @@ class ClubsController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :update, :destroy, :join_club]
   before_action :set_club, only: [:show, :edit, :update, :destroy, :join_club, :kick_out_user]
   before_action :get_moderator, only: [:show, :edit, :update, :destroy]
+  before_action :get_manager, only: [:edit, :update, :destroy]
 
   # GET /clubs
   # GET /clubs.json
   def index
-    @clubs = Club.all
+    @clubs = Club.all.paginate(page: params[:page], per_page: 9).order(created_at: :desc)
   end
 
   # GET /clubs/1
@@ -70,6 +71,7 @@ class ClubsController < ApplicationController
   def join_club
     if current_user.club_members.find_by(club_id: @club.id).presence
       @club.users.delete(current_user)
+      @club.club_events.first.users.delete(current_user) if @club.club_events.presence && current_user.club_events.find_by(club_id: @club.id).presence
       notice = "You have left this club."
     else
       @club.users << current_user
@@ -106,5 +108,9 @@ class ClubsController < ApplicationController
     
     def get_moderator
       @moderator = @club.club_members.find_by(:is_moderator => true).user
+    end
+    
+    def get_manager
+      redirect_to root_url unless (current_user == @moderator) || (current_user.has_role? :admin)
     end
 end

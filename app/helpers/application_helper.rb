@@ -19,4 +19,9 @@ module ApplicationHelper
         <p>By <i>#{fooddrink.user.name}</i></p>"
     end
     
+    def club_info(club)
+        "<p><b>#{club.name}<b><p>
+        <p>#{truncate(club.description, length: 70)}<p>"
+    end
+    
 end

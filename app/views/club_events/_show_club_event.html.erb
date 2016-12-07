@@ -12,7 +12,7 @@
     To: <%= @club_event.to_date.strftime('%A, %d/%m/%Y at %H:%M') %>
   </p>
 <% end %>
-<p><%= @club_event.users.count %> members is going.</p>
+<p><%= render 'club_events/show_members_going' %></p>
 <% if can_manage  %>
     <%= render 'club_events/modify_club_event' %>
     <%= link_to 'Delete', [@club, @club_event], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>

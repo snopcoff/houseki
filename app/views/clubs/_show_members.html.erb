@@ -1,4 +1,4 @@
-<%= link_to @club.users.count, '#', data: {toggle: 'modal', target: '#myMembersModal'} %>
+<%= link_to "#{@club.users.count} member(s)", '#', data: {toggle: 'modal', target: '#myMembersModal'} %>
 <div class="modal fade" id="myMembersModal" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">

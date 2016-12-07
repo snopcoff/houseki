@@ -1,33 +1,24 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Clubs</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Club avatar</th>
-      <th>Description</th>
-      <th>Club event</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div class="row">
+  <div class="col-md-12">
     <% @clubs.each do |club| %>
-      <tr>
-        <td><%= club.name %></td>
-        <td><%= club.club_avatar %></td>
-        <td><%= club.description %></td>
-        <td><%= club.club_event_id %></td>
-        <td><%= link_to 'Show', club %></td>
-        <td><%= link_to 'Edit', edit_club_path(club) %></td>
-        <td><%= link_to 'Destroy', club, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+        <div class="col-sm-6 col-md-4">
+          <div class="thumbnail" style="background-color: transparent;">
+            <%= link_to club_path(club.id), :rel => "lightbox", class: "has-tooltip", :data => {:toggle=>"tooltip", :placement=>"auto"}, title: club_info(club) do %>
+                <%= image_tag club.club_avatar, class: 'img-responsive avatar' %>
+            <% end %>
+            <div class="caption center">
+              <label class="food-name">
+                <%= club.name %>
+              </label>
+            </div>
+          </div>
+        </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
 
-<br>
-
-<%= link_to 'New Club', new_club_path %>
+  <div class="col-md-6 col-md-offset-3">
+    <%= will_paginate @clubs %>
+  </div>
+</div>
