@@ -1,6 +1,6 @@
 class ClubsController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :update, :destroy, :join_club]
-  before_action :set_club, only: [:show, :edit, :update, :destroy]
+  before_action :set_club, only: [:show, :edit, :update, :destroy, :join_club]
   before_action :get_moderator, only: [:show, :edit, :update, :destroy]
 
   # GET /clubs
@@ -68,17 +68,16 @@ class ClubsController < ApplicationController
   end
   
   def join_club
-    club = Club.find(params[:id])
-    if current_user.club_members.find_by(club_id: club.id).presence
-      ClubMember.find_by(user_id: current_user.id).destroy
+    if current_user.club_members.find_by(club_id: @club.id).presence
+      @club.club_members.find_by(user_id: current_user.id).destroy
       notice = "You have left this club."
     else
-      ClubMember.create(club_id: club.id, user_id: current_user.id)
+      @club.users << current_user
       notice = "You have joined this club."
     end
     
     respond_to do |format|
-      format.html { redirect_to club, notice: notice }
+      format.html { redirect_to @club, notice: notice }
       format.json { head :no_content }
     end
   end
