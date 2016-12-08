@@ -497,3 +497,49 @@ u.row l {
       width: 82px;
     }
 }
+.simple {
+    background: #303641;
+    padding-top: 45px;
+    padding-bottom: 10px;
+    border-top-color: #faa523;
+    bottom: 0px;
+}
+
+footer .constrain {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+footer .constrain .row {
+    width: 1240px;
+    max-width: 100%;
+    margin: 0 auto;
+    color: white;
+}
+
+footer .constrain .legal {
+    margin-top: 1em;
+    border-top: solid 1px #333;
+    box-shadow: #000 0 -1px 0
+}
+
+.legal .copyright {
+    margin: 10px 0 0 0;
+    float: left;
+    width: 40%;
+    font-size: 11px;
+    line-height: 130%;
+    color: #777;
+}
+
+footer p.copyright a {
+    color: #aaa;
+}
+
+footer p.copyright span.sponsor-line {
+    display: block;
+    font-size: 10px;
+    margin-top: 1em;
+}
+

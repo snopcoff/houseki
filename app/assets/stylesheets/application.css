@@ -117,8 +117,7 @@
     border-top-color: #ffffff;
     border-bottom-color: #ffffff;
 }
-
-@media (max-width: 767) {
+@media (max-width: 767px) {
     .navbar-custom .navbar-nav .open .dropdown-menu > li > a {
         color: #ffffff;
     }
@@ -142,6 +141,18 @@
         color: #cccccc;
         background-color: transparent;
     }
+    .open .menu-on-collapse {
+    float: none;
+    width: 100%;
+    margin-top: 0;
+    background-color: rgba(249,249,249,0.6);
+    border: 0;
+    box-shadow: none;
+}
+    .sidebar-menu-collapse{
+        display: none!important;
+    }
+
 }
 
 .navbar-custom .navbar-link {
