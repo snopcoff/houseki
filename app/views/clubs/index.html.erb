@@ -1,19 +1,22 @@
 <p id="notice"><%= notice %></p>
 
-<h3>Clubs List (<%= @clubs.count %>)</h3>
-<div class="row">
+<h1 class="h-tt">All clubs (<%= @clubs.count %>)</h1>
+<div class="row" style="background-color: white; margin: 10px 20px 10px 20px;">
   <div class="col-md-12">
     <% @clubs.each do |club| %>
-        <div class="col-md-4">
-          <div class="thumbnail" style="background-color: transparent;">
-            <%= link_to club_path(club.id), :rel => "lightbox", class: "has-tooltip", :data => {:toggle=>"tooltip", :placement=>"auto"}, title: club_info(club) do %>
-                <%= image_tag club.club_avatar, class: 'img-responsive avatar' %>
-            <% end %>
-            <div class="caption center">
-              <label class="food-name">
-                <%= club.name %>
-              </label>
+        <div class="col-md-4" style="height: 280px;padding-top: 10px;border:none;">
+          <div class="thumbnail" style="background-color: transparent;height: 230px;">
+            <div style="width: 80%; margin: auto; overflow:hidden;">
+              <%= link_to club_path(club.id), :rel => "lightbox", class: "has-tooltip", :data => {:toggle=>"tooltip", :placement=>"auto"}, title: club_info(club) do %>
+                  <%= image_tag club.club_avatar, class: 'img-thumbnail', style: 'max-width:100%; height: auto; max-height: 180px;' %>
+                  <!--img-responsive avatar-->
+              <% end %>
             </div>
+          </div>
+          <div class="caption center">
+            <label class="food-name">
+              <%= club.name %>
+            </label>
           </div>
         </div>
     <% end %>
@@ -23,3 +26,17 @@
     <%= will_paginate @clubs %>
   </div>
 </div>
+
+<style>
+ .img-thumbnail {
+  max-width: 230px;
+  max-height: 230px;
+  width: auto;
+  height: auto;
+  /*overflow: hidden;*/
+   /*width: 230px;*/
+   /*height: 230px;*/
+   /*max-height: 230px;*/
+   
+ }
+</style>

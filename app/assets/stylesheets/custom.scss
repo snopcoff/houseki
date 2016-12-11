@@ -404,7 +404,10 @@ u.row l {
   overflow: hidden;
   background-size: cover;
   background-position: center;
-  width: 100%;
+  border: none;
+  max-width: 300px;
+  //height: auto;
+  max-height: 230px;
 }
 .div-co-name {
   text-align:center;
@@ -439,6 +442,9 @@ u.row l {
   margin-left: 20px;
 }
 
+.page-container {
+  margin-bottom: 40px;
+}
 // new review
 .slick-dots li {
   display: inline-block;
@@ -543,3 +549,34 @@ footer p.copyright span.sponsor-line {
     margin-top: 1em;
 }
 
+// clubs
+.navbar-brand {
+    font-size: 15px;
+}
+.h-tt {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+.h1-tt {
+  text-align: left;
+  font-weight: bold;
+  margin-bottom: 30px;
+  margin-left: 15px;
+}
+body > .container {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.caption {
+  margin-top: 3px;
+  text-align: center;
+}
+p {
+  text-align: justify;
+  white-space: pre-wrap;
+}
+
+.club-bt {
+    display: inline-flex;
+  }
