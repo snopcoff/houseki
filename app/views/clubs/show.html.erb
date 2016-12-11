@@ -4,31 +4,39 @@
   <p id="notice"><%= notice %></p>
 <% end %>
 
-<div class="row">
-  <div class="col-md-2">
-    <%= image_tag(@club.club_avatar, style: "height: 100px; width: 100px;") %>
+<div class="row" style="margin-bottom: 20px;">
+  <div class="col-md-4">
+    <%= image_tag(@club.club_avatar, class: "img-thumbnail") %>
+    <br>
+    <div style="margin-top: 15px; margin-left: 10px;">
+      Founder : 
+      <br>Number : <%= render 'show_members' %>
+    </div>
   </div>
-  <div class="col-md-10">
+  <div class="col-md-8">
     <h3><%= @club.name %></h3>
     <p><%= @club.description %></p>
-    <p><%= render 'show_members' %></p>
+    <!--<p><=%= render 'show_members' %></p>-->
   </div>
 </div>
 
+
 <% if user_signed_in? %>
-  
-  <% unless current_user == @moderator %>
-    <%= form_tag("/clubs/join/" + @club.id.to_s, method: :PUT) do %>
-        <%= submit_tag is_member, class: "btn btn-primary" %>
-    <% end %>
-  <% end %>
-  
-  <% if can_manage %>
-    <%= render 'add_event' %>
-    <%= link_to 'Edit', edit_club_path(@club), class: "btn btn-primary" %>
-    <%= button_to "Delete Club", @club, data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger" %>
-  <% end %>
-  
+  <div class="col-md-4"></div>
+    <div class="col-md-8 club-bt" style="">
+      <% unless current_user == @moderator %>
+        <%= form_tag("/clubs/join/" + @club.id.to_s, method: :PUT) do %>
+            <%= submit_tag is_member, class: "btn btn-primary" %>
+        <% end %>
+      <% end %>
+      
+      <% if can_manage %>
+        <%= render 'add_event' %>
+        <%= link_to 'Edit', edit_club_path(@club), class: "btn btn-primary" %>
+        <%= button_to "Delete Club", @club, data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger" %>
+      <% end %>
+    </div>
+
   <% if can_view %>
     <div>
       <% if @club.club_events.presence %>
@@ -40,3 +48,14 @@
     </div>
   <% end %>
 <% end %>
+
+
+<style>
+  .club-bt {
+    display: inline-flex;
+  }
+  .club-bt * {
+    margin-right: 2px;
+  }
+  
+</style>

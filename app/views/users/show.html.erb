@@ -1,5 +1,5 @@
 <div class="center">
-    <h1>
+    <h1 class="h-tt">
         <%= getname(@user, current_user) %> Profile
     </h1>
     <div class="row">
@@ -29,22 +29,34 @@
         </div>
         <div class="col-md-9 right-side">
             <div>
-                <h3><%= getname(@user, current_user) %> Reviews (<%= @user.fooddrinks.count %>)</h3>
+                <h3 style="font-weight: bold;"><%= getname(@user, current_user) %> reviews (<%= @user.fooddrinks.count %>)</h3>
                 <%= render 'users/show_fooddrinks.html.erb' %>
             </div>
-            <div>
-                <h3>
-                    <%= getname(@user, current_user) %>
-                    Clubs (<%= @own_clubs.count %>)
+        </div>
+    </div>
+        
+    <div class="row">    
+        <div class="col-md-3"></div>
+        <div class="col-md-9 row">
+            <div class="col-md-6">
+                <h3 style="font-weight: bold; text-align: left;">
+                    <%= getname(@user, current_user) %> clubs (<%= @own_clubs.count %>)
                 </h3>
                 <%= render 'show_clubs.html.erb' %>
             </div>
-            <div>
-                <h3><%= getname(@user, current_user) %> joining clubs 
+            <div class="col-md-6">
+                <h3 style="font-weight: bold; text-align: left;"><%= getname(@user, current_user) %> joining clubs 
                 (<%= @join_clubs.count %>)</h3>
                 <%= render 'show_joining_clubs.html.erb' %>
             </div>
         </div>
     </div>
+    
 </div>
 </br></br>
+
+<style>
+img {
+    border-radius: 6px;
+}
+</style>
