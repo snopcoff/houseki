@@ -16,6 +16,7 @@
                   Menu
         </a>
         <ul class="dropdown-menu menu-on-collapse">
+                  <li><h4 class="menu-fooddrink"><%= link_to "FOODS", fd_list_path("food") %></h4></li>
                   <% @fd_types.each do |type| %>
                     <% if type.foodtype=="food" %>
                       <li class="">
@@ -26,6 +27,7 @@
                     <% end %>
                   <% end %>
                   <li role="separator"class="divider"></li>
+                  <li><h4 class="menu-fooddrink"><%= link_to "DRINKS", fd_list_path("drink") %></h4></li>
                   <% @fd_types.each do |type| %>
                     <% if type.foodtype=="drink" %>
                       <li class="">

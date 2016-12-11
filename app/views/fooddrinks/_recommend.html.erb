@@ -16,3 +16,22 @@
   <% end %>
   <div class="clearfix"></div>
 </div>
+
+<div class="row two-time-fd">
+  <% @recommends.each do |fooddrink| %>
+    <div class="col-sm-3 col-md-2">
+      <div class="thumbnail">
+        <%= link_to fooddrink_path(fooddrink.id), :rel => "lightbox", class: "has-tooltip", :data => {:toggle=>"tooltip", :placement=>"auto"}, title: display_info(fooddrink) do %>
+            <%= image_tag(fooddrink.file, class: " cover") %>
+        <% end %>
+        <div class="caption">
+          <label class="food-name"><%= truncate(fooddrink.name, length: 25) %></label>
+          <div>
+            <%= truncate(fooddrink.address, length: 25) %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <div class="clearfix"></div>
+</div>

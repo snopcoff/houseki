@@ -9,3 +9,12 @@ jQuery(document).on 'turbolinks:load', ->
       slidesToScroll: 1,
       touchMove: false
     });
+jQuery(document).on 'turbolinks:load', ->
+    $('.two-time').slick({
+      dots: true,
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      touchMove: false
+    });
+    
+    

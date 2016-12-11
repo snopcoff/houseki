@@ -37,13 +37,14 @@ function fd_type_select() {
     var selectAddress = $('select#fooddrink_fd_type_id');
     selectAddress.empty();
     if (is_food == "true") {
-        $.each(selectData, function (key, value) {
+        $.each(selectData, function(key, value) {
             if ($(value).data('type') === 'food') {
                 selectAddress.append($(value).clone());
             }
         });
-    } else {
-        $.each(selectData, function (key, value) {
+    }
+    else {
+        $.each(selectData, function(key, value) {
             if ($(value).data('type') === 'drink') {
                 selectAddress.append($(value).clone());
             }
@@ -52,8 +53,14 @@ function fd_type_select() {
 }
 
 function display_tooltip() {
-  $('.has-tooltip').tooltip({html: true, container: "body"});
-  $('.imdb-wrapper').tooltip({html: true, container: "body"});
+    $('.has-tooltip').tooltip({
+        html: true,
+        container: "body"
+    });
+    $('.imdb-wrapper').tooltip({
+        html: true,
+        container: "body"
+    });
 }
 
 function initPage() {
@@ -70,15 +77,34 @@ function initPage() {
     }
     var errors = $('#error_explanation ul li');
     if (!jQuery.isEmptyObject(errors)) {
-        errors.each(function (i, obj) {
+        errors.each(function(i, obj) {
             obj = $(obj);
             toastr.error(obj.text());
         });
     }
     fd_type_select();
-    $('input[name="fooddrink[foodtype]"]').bind('change', function () {
+    $('input[name="fooddrink[foodtype]"]').bind('change', function() {
         fd_type_select();
     });
+    
+    function resize(){
+         var width =  $(window).width();
+        if (width < 600) {
+            $('.one-time').hide();
+            $('.one-time-fd').hide();
+            $('.two-time').show();
+            $('.two-time-fd').hide();
+        }else {
+            $('.one-time').show();
+            $('.one-time-fd').show();
+            $('.two-time').hide();
+            $('.two-time-fd').hide();
+        }
+    }
+    resize();
+    $(window).bind('resize', function() {
+        resize();
+    })
 }
 
 document.addEventListener("turbolinks:load", function() {
@@ -86,5 +112,5 @@ document.addEventListener("turbolinks:load", function() {
 })
 
 $(document).ready(display_tooltip);
-$(document).on('page:change',display_tooltip);
-$(document).on('turbolinks:load',display_tooltip);
+$(document).on('page:change', display_tooltip);
+$(document).on('turbolinks:load', display_tooltip);
