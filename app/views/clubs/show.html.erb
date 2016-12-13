@@ -9,7 +9,7 @@
     <%= image_tag(@club.club_avatar, class: "img-thumbnail") %>
     <br>
     <div style="margin-top: 15px; margin-left: 10px;">
-      Founder : 
+      Founder : <%= link_to @moderator.name, show_user_path(@moderator.id) %>
       <br>Number : <%= render 'show_members' %>
     </div>
   </div>

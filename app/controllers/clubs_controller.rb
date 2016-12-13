@@ -87,6 +87,7 @@ class ClubsController < ApplicationController
   def kick_out_user
     user = @club.users.find(params[:member_id])
     @club.club_events.first.users.delete(user) if @club.club_events.presence && user.club_events.find_by(club_id: @club.id).presence
+    @club.thread.comments.where(creator_id: user.id).delete_all
     @club.users.delete(user)
     
     respond_to do |format|

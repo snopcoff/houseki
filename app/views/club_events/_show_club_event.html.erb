@@ -1,5 +1,10 @@
 <h3>Event: <%= @club_event.name %></h3>
 <p><%= @club_event.description %></p>
+<% if @club_event.address.presence %>
+  <p>
+    At: <%= @club_event.address %>
+  </p>
+<% end %>
 <% if @club_event.from_date.strftime('%A') == @club_event.to_date.strftime('%A') %>
   <p>
     In <%= @club_event.from_date.strftime('%A, %d/%m/%Y') %>

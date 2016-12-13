@@ -5,6 +5,7 @@ class Fooddrink < ActiveRecord::Base
     belongs_to :fd_type
     
     validates :user, presence: true
+    validates :name, presence: true
     acts_as_commontable
     
     ratyrate_rateable 'overall'
