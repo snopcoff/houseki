@@ -1,6 +1,6 @@
 <header>
   <nav class="navbar navbar-fixed-top navbar-custom">
-    <div class="container nav-container" style="display: inline-flex;">
+    <div class="container nav-container">
     <div class="navbar-header">
      <%= link_to "Food & Drink Review", root_path, class: "navbar-brand" %>
       <!--<a class="navbar-brand" href="#">Food & Drink Review</a>-->
@@ -43,7 +43,7 @@
       <% end %>
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right" style="float: right;">
         <li><%= render 'fooddrinks/fooddrink_search_box.html.erb' %></li>
         <li><%= link_to "Home", root_path %></li>
         <li><%= link_to "All Clubs", clubs_path %></li>
