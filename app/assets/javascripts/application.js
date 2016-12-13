@@ -93,7 +93,7 @@ function initPage() {
             $('.one-time').hide();
             $('.one-time-fd').hide();
             $('.two-time').show();
-            $('.two-time-fd').hide();
+            $('.two-time-fd').show();
         }else {
             $('.one-time').show();
             $('.one-time-fd').show();
